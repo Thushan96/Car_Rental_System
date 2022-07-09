@@ -4,7 +4,7 @@ import lk.spring.dto.AdminDTO;
 
 import java.util.List;
 
-public interface AdminRepoService {
+public interface AdminService {
     void saveAdmin(AdminDTO dto);
     AdminDTO searchAdmin(String id);
     void updateAdmin(AdminDTO dto);

@@ -1,7 +1,5 @@
 package lk.spring.controller;
 
-import lk.spring.dto.CarDTO;
-import lk.spring.dto.CustomerDTO;
 import lk.spring.dto.DriverDTO;
 import lk.spring.service.DriverService;
 import lk.spring.util.ResponseUtil;
@@ -44,7 +42,7 @@ public class DriverController {
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteDriver(@PathVariable String id){
         driverService.deleteDriver(id);
-        return new ResponseUtil(200,"Ok",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 
     @GetMapping(params = {"driverId"},produces = MediaType.APPLICATION_JSON_VALUE)

@@ -3,7 +3,7 @@ package lk.spring.service.impl;
 import lk.spring.dto.AdminDTO;
 import lk.spring.entity.Admin;
 import lk.spring.repo.AdminRepo;
-import lk.spring.service.AdminRepoService;
+import lk.spring.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class AdminRepoServiceImpl implements AdminRepoService {
+public class AdminServiceImpl implements AdminService {
     @Autowired
     ModelMapper mapper;
 

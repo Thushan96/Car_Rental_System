@@ -43,7 +43,7 @@ public class CarController {
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCar(@PathVariable String id){
         carService.deleteCar(id);
-        return new ResponseUtil(200,"Ok",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 
 }

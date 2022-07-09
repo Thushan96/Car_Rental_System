@@ -1,7 +1,6 @@
 package lk.spring.controller;
 
 import lk.spring.dto.BookingDTO;
-import lk.spring.dto.DriverDTO;
 import lk.spring.service.BookingService;
 import lk.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +41,7 @@ public class BookingController{
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteBooking(@PathVariable String id){
         bookingService.deleteBooking(id);
-        return new ResponseUtil(200,"Ok",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 
     @GetMapping(params = {"bookingId"},produces = MediaType.APPLICATION_JSON_VALUE)

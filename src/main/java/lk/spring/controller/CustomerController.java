@@ -3,7 +3,6 @@ package lk.spring.controller;
 import lk.spring.util.ResponseUtil;
 import lk.spring.dto.CustomerDTO;
 import lk.spring.service.CustomerService;
-import lk.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -43,7 +42,7 @@ public class CustomerController {
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCustomer(@PathVariable String id){
         customerService.deleteCustomer(id);
-        return new ResponseUtil(200,"Ok",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 
     @GetMapping(params = {"cusId"},produces = MediaType.APPLICATION_JSON_VALUE)
