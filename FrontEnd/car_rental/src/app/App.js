@@ -18,6 +18,8 @@ import Payments from "../pages/payments";
 import SignInForm from "../pages/SignIn";
 import AdminHomePage  from "../pages/adminHomePage";
 import AdminProfile from "../pages/adminProfile";
+import AdminCustomers from "../pages/adminCustomers";
+import AdminCars from "../pages/adminCars";
 
 
 function App() {
@@ -34,6 +36,8 @@ function App() {
                 <Route exact path='/SignIn' element={<SignInForm/>}/>
                 <Route exact path='/adminHome' element={<AdminHomePage/>}/>
                 <Route exact path='/adminProfile' element={<AdminProfile/>}/>
+                <Route exact path='/adminCustomers' element={<AdminCustomers/>}/>
+                <Route exact path='/adminCars' element={<AdminCars/>}/>
             </Routes>
         </BrowserRouter>
   );

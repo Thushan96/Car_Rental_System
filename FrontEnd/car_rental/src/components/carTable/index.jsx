@@ -2,7 +2,7 @@ import React from "react";
 import Table from 'react-bootstrap/Table';
 
 
-function OrderTable(){
+function carTable(){
     return(
         <div>
             <div className="table-box" style={{height: "max-content", overflow: "no-display",margin:9 }}>
@@ -10,15 +10,15 @@ function OrderTable(){
                     <Table className="table table-hover">
                         <thead className="text-white" style={{backgroundColor:"#575551"}} id="tblOrders">
                         <tr>
-                            <th scope="col">Booking ID</th>
-                            <th scope="col">Car ID</th>
-                            <th scope="col">Driver ID</th>
-                            <th scope="col">Customer ID</th>
-                            <th scope="col">Order Date</th>
-                            <th scope="col">Notes</th>
-                            <th scope="col">Pickup Date</th>
-                            <th scope="col">Return Date</th>
-                            <th scope="col">Status</th>
+                            <th scope="col">ID</th>
+                            <th scope="col">Reg No</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">No Of Passengers</th>
+                            <th scope="col">Transmission</th>
+                            <th scope="col">Car Type</th>
+                            <th scope="col">Color</th>
+                            <th scope="col">Fuel Type</th>
+
                         </tr>
                         </thead>
                         <tbody id="tblOrderBody">
@@ -30,4 +30,4 @@ function OrderTable(){
     );
 }
 
-export default OrderTable;
+export default carTable;

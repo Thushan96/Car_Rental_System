@@ -7,7 +7,7 @@ export default function (props) {
     return (
         <div>
             <DefaultNavbarComp/>
-        <div style={{backgroundImage: `url(${background})`,height:"96vh"}}>
+        <div style={{backgroundImage: `url(${background})`,height:"96vh",paddingTop:1}}>
         <div className="Auth-form-container">
             <form className="Auth-form">
                 <div className="Auth-form-content" >

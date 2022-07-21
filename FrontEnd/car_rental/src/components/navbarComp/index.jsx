@@ -24,11 +24,11 @@ class NavbarComp extends Component{
                                 <Nav.Link as={Link} to={"/adminHome"}>Home</Nav.Link>
                                 <Nav.Link as={Link} to={"/adminProfile"}>Profile</Nav.Link>
                                 <Nav.Link as={Link} to={"/Orders"}>Orders</Nav.Link>
-                                <Nav.Link as={Link} to={"/Customers"}>Customers</Nav.Link>
+                                <Nav.Link as={Link} to={"/adminCustomers"}>Customers</Nav.Link>
                                 <Nav.Link as={Link} to={"/Payments"}>Payments</Nav.Link>
                             </Nav>
                             <Nav>
-                                <Nav.Link as={Link} to={"/Cars"}>Cars</Nav.Link>
+                                <Nav.Link as={Link} to={"/adminCars"}>Cars</Nav.Link>
                                 <Nav.Link as={Link} to={"/Drivers"}>Drivers</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>

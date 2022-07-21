@@ -5,7 +5,7 @@ import Table from 'react-bootstrap/Table';
 function driverTable(){
     return(
         <div>
-            <div className="table-box" style={{height: "250px", overflow: "no-display",margin:9 }}>
+            <div className="table-box" style={{height: "max-content", overflow: "no-display",margin:9 }}>
                 <div className="table-responsive-lg">
                     <Table className="table table-hover">
                         <thead className="text-white" style={{backgroundColor:"#575551"}} id="tblOrders">

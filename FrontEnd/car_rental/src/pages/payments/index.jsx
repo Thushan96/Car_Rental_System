@@ -1,13 +1,22 @@
 import React,{Component} from "react";
+import NavbarComp from "../../components/navbarComp";
+import PaymentTable from "../../components/paymentTable";
 
-class Payments extends Component{
+class Orders extends Component{
     render() {
         return(
             <div>
-                <h1>Payments</h1>
+                <NavbarComp/>
+                <div  style={{backgroundColor:"#cacfd9",padding:2}}>
+                    <h1>Payments</h1>
+
+                    <div style={{height:"max-content",backgroundColor:"cornsilk"}}>
+                        <PaymentTable/>
+                    </div>
+                </div>
             </div>
         )
     }
 }
 
-export default Payments;
+export default Orders;

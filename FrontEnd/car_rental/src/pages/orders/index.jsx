@@ -7,10 +7,13 @@ class Orders extends Component{
         return(
             <div>
                 <NavbarComp/>
-                <div style={{padding:"2px"}}>
+                <div  style={{backgroundColor:"#cacfd9",padding:2}}>
                     <h1>Orders</h1>
-                </div>
+
+                <div style={{height:"max-content",backgroundColor:"cornsilk"}}>
                 <OrderTable/>
+                </div>
+                </div>
             </div>
         )
     }

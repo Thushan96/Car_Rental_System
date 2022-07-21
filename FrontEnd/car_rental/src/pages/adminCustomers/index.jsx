@@ -2,29 +2,29 @@ import React,{Component} from "react";
 import NavbarComp from "../../components/navbarComp";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import DriverTable from "../../components/driverTable";
+import CustomerTable from "../../components/customerTable";
 
 
 
 
-class Drivers extends Component{
+class AdminCustomers extends Component{
     render() {
         return(
             <div>
                 <NavbarComp/>
                 <div style={{height:"max-content",backgroundColor:"cornsilk"}}>
                     <div style={{backgroundColor:"#cacfd9",padding:2}}>
-                <h1>Drivers</h1>
+                        <h1>Customers</h1>
                     </div>
-                <div className="row" >
-                    <div className="col-6 mt-2">
-                        <WithHeaderStyledCard/>
-                    </div>
-                    <div className="col-6">
-                        <DriverTable/>
+                    <div className="row" >
+                        <div className="col-6 mt-2">
+                            <WithHeaderStyledCard/>
+                        </div>
+                        <div className="col-6">
+                            <CustomerTable/>
+                        </div>
                     </div>
                 </div>
-            </div>
             </div>
         )
     }
@@ -33,7 +33,7 @@ class Drivers extends Component{
 function WithHeaderStyledCard() {
     return (
         <Card >
-            <Card.Header as="h5">Manage Drivers</Card.Header>
+            <Card.Header as="h5">Manage Customers</Card.Header>
             <Card.Body>
                 <div className="row">
                     <div className="form-group " className="col-4 m1-2">
@@ -53,6 +53,22 @@ function WithHeaderStyledCard() {
                         />
                     </div>
                     <div className="form-group " className="col-4 my-2">
+                        <b><label>Address</label></b>
+                        <input
+                            type="text"
+                            className="form-control mt-1"
+                            placeholder="Enter Address"
+                        />
+                    </div>
+                    <div className="form-group " className="col-4 my-2">
+                        <b><label>Email</label></b>
+                        <input
+                            type="text"
+                            className="form-control mt-1"
+                            placeholder="Enter email"
+                        />
+                    </div>
+                    <div className="form-group " className="col-4 my-2">
                         <b><label>Contact Number</label></b>
                         <input
                             type="text"
@@ -66,6 +82,14 @@ function WithHeaderStyledCard() {
                             type="text"
                             className="form-control mt-1"
                             placeholder="Enter NIC"
+                        />
+                    </div>
+                    <div className="form-group " className="col-5 my-2">
+                        <b><label>Driving Licence Number</label></b>
+                        <input
+                            type="text"
+                            className="form-control mt-1"
+                            placeholder="Enter Driving Licence"
                         />
                     </div>
                     <div className="form-group " className="col-5 my-2">
@@ -97,4 +121,4 @@ function WithHeaderStyledCard() {
     );
 }
 
-export default Drivers;
+export default AdminCustomers;

@@ -14,7 +14,7 @@ function AdminProfile(){
             <div style={{backgroundColor:"#9e9898",padding:5}}>
             <b><h3>Admin Profile</h3></b>
             </div>
-            <div className="row">
+            <div className="row" style={{backgroundColor:"cornsilk",height:"78vh"}}>
                 <div className="col-4" >
                     {/*<div className="col-8" style={{blockSize:"80%"}}>*/}
                     {/*    <h1>image</h1>*/}
@@ -22,7 +22,7 @@ function AdminProfile(){
 
                     <KitchenSinkExample/>
                 </div>
-                <div className="col-8" style={{backgroundColor:"cornsilk"}}>
+                <div className="col-8" >
                     <div className="form-group " className="col-6 my-2">
                         <b><label>ID</label></b>
                         <input
