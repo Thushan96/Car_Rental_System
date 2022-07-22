@@ -2,7 +2,7 @@ import React from "react";
 import Table from 'react-bootstrap/Table';
 
 
-function carTable(){
+function DriverScheduleTable(){
     return(
         <div>
             <div className="table-box" style={{height: "max-content", overflow: "no-display",margin:9 }}>
@@ -10,14 +10,11 @@ function carTable(){
                     <Table className="table table-hover">
                         <thead className="text-white" style={{backgroundColor:"#575551"}} id="tblOrders">
                         <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Reg No</th>
-                            <th scope="col">Brand</th>
-                            <th scope="col">No Of Passengers</th>
-                            <th scope="col">Transmission</th>
-                            <th scope="col">Car Type</th>
-                            <th scope="col">Color</th>
-                            <th scope="col">Fuel Type</th>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Customer Contact No</th>
+                            <th scope="col">Car ID</th>
+                            <th scope="col">Pickup Date</th>
+                            <th scope="col">Return Date</th>
 
                         </tr>
                         </thead>
@@ -31,4 +28,4 @@ function carTable(){
     );
 }
 
-export default carTable;
+export default DriverScheduleTable;

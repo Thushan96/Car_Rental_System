@@ -1,10 +1,11 @@
 import React,{Component} from "react";
+import CustomerNavbar from "../../components/customerNavbar";
 
 class Customer extends Component{
     render() {
         return(
             <div>
-                <h1>Customer</h1>
+                <CustomerNavbar/>
             </div>
         )
     }

@@ -20,6 +20,11 @@ import AdminHomePage  from "../pages/adminHomePage";
 import AdminProfile from "../pages/adminProfile";
 import AdminCustomers from "../pages/adminCustomers";
 import AdminCars from "../pages/adminCars";
+import CustomerProfile from "../pages/customerProfile";
+import CustomerOrders from "../pages/customerOrders";
+import CustomerCars from "../pages/customerCars";
+import CustomerPayments from "../pages/customerPayments";
+import DriverSchedule from "../pages/driverSchedule";
 
 
 function App() {
@@ -38,6 +43,12 @@ function App() {
                 <Route exact path='/adminProfile' element={<AdminProfile/>}/>
                 <Route exact path='/adminCustomers' element={<AdminCustomers/>}/>
                 <Route exact path='/adminCars' element={<AdminCars/>}/>
+                <Route exact path='/customerProfile' element={<CustomerProfile/>}/>
+                <Route exact path='/customerOrders' element={<CustomerOrders/>}/>
+                <Route exact path='/customerCars' element={<CustomerCars/>}/>
+                <Route exact path='/customerPayments' element={<CustomerPayments/>}/>
+                <Route exact path='/customerHome' element={<HomePage/>}/>
+                <Route exact path='/driverSchedule' element={<DriverSchedule/>}/>
             </Routes>
         </BrowserRouter>
   );
