@@ -25,6 +25,7 @@ import CustomerOrders from "../pages/customerOrders";
 import CustomerCars from "../pages/customerCars";
 import CustomerPayments from "../pages/customerPayments";
 import DriverSchedule from "../pages/driverSchedule";
+import DriverProfile from "../pages/driverProfile";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
                 <Route exact path='/customerPayments' element={<CustomerPayments/>}/>
                 <Route exact path='/customerHome' element={<HomePage/>}/>
                 <Route exact path='/driverSchedule' element={<DriverSchedule/>}/>
+                <Route exact path='/driverProfile' element={<DriverProfile/>}/>
             </Routes>
         </BrowserRouter>
   );
