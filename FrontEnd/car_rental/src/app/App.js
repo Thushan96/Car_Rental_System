@@ -1,6 +1,9 @@
 import React from "react";
 import HomePage from "../pages/homePage";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
 import NavbarComp from "../components/navbarComp";
 import DefaultNavbarComp from "../components/defaultNavbarComp";
 import {

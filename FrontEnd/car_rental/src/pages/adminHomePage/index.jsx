@@ -5,7 +5,8 @@ import CusIcon from "../../assets/icons/icons8_customer_64.png"
 import CarIcon from "../../assets/icons/icons8_car_64.png"
 import DriverIcon from "../../assets/icons/icons8_driver_64.png"
 import PurchaseIcon from "../../assets/icons/icons8_purchase_order_64.png"
-import WeeklyChart from "../../components/dailyChart/inex";
+import DailyChart from "../../components/dailyChart/index";
+import WeeklyChart from "../../components/weeklyChart";
 
 
 function AdminHomePage(){
@@ -80,7 +81,7 @@ function AdminHomePage(){
                             <div className="row align-items-center no-gutters">
                                 <div className="col mr-2">
                                     <div className="text-uppercase text-success font-weight-bold text-xs mb-1">
-                                        <span>Orders</span>
+                                        <span>Bookings</span>
                                     </div>
                                     <div className="text-dark font-weight-bold h5 mb-0"><span
                                         id="txtOrderCount">10</span></div>
@@ -94,7 +95,34 @@ function AdminHomePage(){
                 </div>
             </div>
             <div className="row">
-                <WeeklyChart/>
+                <div className="col-6">
+                    <div className="card shadow mb-4">
+                        <div className="card-header d-flex  align-items-start">
+                            <h6 className="text-primary font-weight-bold m-0">Daily Income</h6>
+                            <div style={{height:"max-content",width:"max-content"}}>
+                                            <DailyChart/>
+                                        </div>
+                        </div>
+                        <div className="card-body">
+
+                        </div>
+                    </div>
+                </div>
+{/*---------------------------------------------------------2nd Chart---------------------------------------                */}
+                <div className="col-6">
+                    <div className="card shadow" >
+                        <div className="card-header d-flex align-items-stretch">
+                            <h6 className="text-primary font-weight-bold m-0">Monthly Income</h6>
+                            <div style={{marginTop:"11%"}}>
+                                <WeeklyChart/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+
             </div>
         </div>
         </>
