@@ -23,8 +23,8 @@ class CustomerOrders extends Component{
                         <CarTable/>
                     </div>
                     <div className="row">
-                        <div className="col-2 mt-2" style={{display:"flex",alignItems:"normal",justifyContent:"end",width:"98%"}}>
-                            <Button variant="warning" style={{paddingLeft:14,paddingRight:14}}><b>Book Car</b></Button>
+                        <div className="col mt-2" style={{display:"flex",alignItems:"flex-end",justifyContent:"flex-end"}}>
+                            <Button variant="warning" style={{paddingLeft:14,paddingRight:14,marginRight:"20px"}}><b>Book Car</b></Button>
                         </div>
                     </div>
             </div>

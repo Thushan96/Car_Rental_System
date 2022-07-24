@@ -80,13 +80,13 @@ function WithHeaderStyledCard() {
                         <div className="col-2 mt-2">
                             <Button variant="outline-primary" style={{paddingLeft:24}}>Save</Button>
                         </div>
-                        <div className="col-2 mt-2">
+                        <div className="col-2 mt-2 mr-4">
                             <Button variant="outline-info">Update</Button>
                         </div>
-                        <div className="col-2 mt-2">
+                        <div className="col-2 mt-2 mr-4">
                             <Button variant="outline-danger">Delete</Button>
                         </div>
-                        <div className="col-3 mt-2">
+                        <div className="col-4 mt-2">
                             <Button variant="outline-dark">Get All</Button>
                         </div>
                     </div>

@@ -36,7 +36,7 @@ function WithHeaderStyledCard() {
             <Card.Header as="h5">Manage Customers</Card.Header>
             <Card.Body>
                 <div className="row">
-                    <div className="form-group " className="col-4 m1-2">
+                    <div className="form-group " className="col-4">
                         <b><label>ID</label></b>
                         <input
                             type="text"
@@ -44,7 +44,7 @@ function WithHeaderStyledCard() {
                             placeholder="Enter ID"
                         />
                     </div>
-                    <div className="form-group " className="col-4 my-1">
+                    <div className="form-group " className="col-4">
                         <b><label>Name</label></b>
                         <input
                             type="text"
@@ -52,7 +52,7 @@ function WithHeaderStyledCard() {
                             placeholder="Enter Name"
                         />
                     </div>
-                    <div className="form-group " className="col-4 my-2">
+                    <div className="form-group " className="col-4 ">
                         <b><label>Address</label></b>
                         <input
                             type="text"
@@ -101,16 +101,16 @@ function WithHeaderStyledCard() {
                         />
                     </div>
                     <div className="row">
-                        <div className="col-2 mt-2">
+                        <div className="col-2 mt-2 ">
                             <Button variant="outline-primary" style={{paddingLeft:24}}>Save</Button>
                         </div>
-                        <div className="col-2 mt-2">
+                        <div className="col-2 mt-2 mr-4">
                             <Button variant="outline-info">Update</Button>
                         </div>
-                        <div className="col-2 mt-2">
+                        <div className="col-2 mt-2 mr-4">
                             <Button variant="outline-danger">Delete</Button>
                         </div>
-                        <div className="col-3 mt-2">
+                        <div className="col-4 mt-2">
                             <Button variant="outline-dark">Get All</Button>
                         </div>
                     </div>

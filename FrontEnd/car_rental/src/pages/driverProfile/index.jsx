@@ -77,7 +77,7 @@ function KitchenSinkExample() {
         <Card style={{ width: '28rem',height:'22rem' }}>
             <Card.Img className="img-fluid rounded-circle mx-5 mt-5" variant="top"  src= {myImage} style={{ width: '18rem',height:'15rem' }} />
             <Card.Body>
-                <div className="col-8" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"80%"}}>
+                <div className="col-9" style={{display:"flex",justifyContent:"center",alignItems:"center",width:"80%"}}>
                     <Button variant="secondary" className="mx-5 mt-2">Change Photo</Button>{' '}
                 </div>
             </Card.Body>

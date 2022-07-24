@@ -161,13 +161,13 @@ function WithHeaderStyledCar() {
                             placeholder="Enter Free Millage Duration"
                         />
                     </div>
-                    <div className="col-1" style={{marginTop:"2.7vw"}}>
+                    <div className="col-1 " style={{marginTop:"2.7vw"}}>
                         <Button variant="outline-primary" style={{paddingLeft:24}}>Save</Button>
                     </div>
-                    <div className="col-1 " style={{marginTop:"2.7vw"}}>
+                    <div className="col-1 mr-4" style={{marginTop:"2.7vw"}}>
                         <Button variant="outline-info">Update</Button>
                     </div>
-                    <div className="col-1 " style={{marginTop:"2.7vw"}}>
+                    <div className="col-1 mr-4" style={{marginTop:"2.7vw"}}>
                         <Button variant="outline-danger">Delete</Button>
                     </div>
                     <div className="col-2 " style={{marginTop:"2.7vw"}}>

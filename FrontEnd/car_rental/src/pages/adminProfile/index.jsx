@@ -57,7 +57,7 @@ function AdminProfile(){
                         />
                     </div>
                     <div className="d-grid gap-2  col-2 mx-5">
-                        <button type="submit" className="btn btn-dark">
+                        <button type="submit" >
                             <b> Update </b>
                         </button>
                     </div>
@@ -72,7 +72,7 @@ function KitchenSinkExample() {
         <Card style={{ width: '28rem',height:'22rem' }}>
             <Card.Img className="img-fluid rounded-circle mx-5 mt-5" variant="top"  src= {myImage} style={{ width: '18rem',height:'15rem' }} />
             <Card.Body>
-                <div className="col-8">
+                <div className="col-9">
                     <Button variant="secondary" className="mx-5 mt-2">Change Photo</Button>{' '}
                 </div>
             </Card.Body>
