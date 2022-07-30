@@ -1,0 +1,242 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+#admin_Home_Page{
+    width: 100%;
+    height: 100vh;
+}
+#cover1{
+    width: 80%;
+    height: 75%;
+    position: relative;
+    margin: auto;
+    top: 97px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+
+#admin_profile_Page{
+    width: 100%;
+    height: 100vh;
+}
+#cover2{
+    width: 80%;
+    height: 75%;
+    position: relative;
+    margin: auto;
+    top: 117px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+#card{
+    position: absolute;
+    top: 19px;
+    width: 95%;
+    left: 25px;
+    height: 483px;
+}
+.card-body div{
+    margin: 5px;
+}
+#adminProfileImage{
+    position: relative;
+    top: -243px;
+    left: 747px;
+    width: 14rem;
+}
+#btnSave{
+    position: relative;
+    top: 57px;
+    left: 394px;
+    width: 126px;
+}
+
+#btnUpdate{
+    position: relative;
+    left: 82px;
+    top: 57px;
+    width: 146px;
+}
+
+/*                                                 */
+#admin_Customer_Page{
+    width: 100%;
+    height: 100vh;
+}
+
+#cover3{
+    width: 80%;
+    height: 77%;
+    position: relative;
+    margin: auto;
+    top: 117px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+
+#customerSearch{
+    position: relative;
+    top: 7vh;
+    left: 70px;
+}
+#customerSearchbtn{
+    position: relative;
+    left: 200px;
+    bottom: 39px;
+}
+#customerDiv{
+    position: relative;
+    top: 65px;
+    padding: 0px 67px;
+}
+#customerTable{
+    position: relative;
+    top: 93px;
+    padding: 20px;
+}
+/*                                                */
+#admin_Car_Page{
+    width: 100%;
+    height: 100vh;
+}
+#cover4{
+    width: 80%;
+    height: 77%;
+    position: relative;
+    margin: auto;
+    top: 117px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+#carDiv{
+    position: relative;
+    top: 65px;
+    padding: 0px 67px;
+}
+#carTable{
+    position: relative;
+    top: 93px;
+    padding: 20px;
+}
+#carSearch{
+    position: relative;
+    top: 7vh;
+    left: 70px;
+}
+#btncarSearch{
+    position: relative;
+    left: 200px;
+    bottom: 39px;
+}
+/*                                                */
+#admin_Driver_Page{
+    width: 100%;
+    height: 100vh;
+}
+#cover5{
+    width: 80%;
+    height: 77%;
+    position: relative;
+    margin: auto;
+    top: 117px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+#driverSearch{
+    position: relative;
+    bottom: 240px;
+    left: 2px;
+}
+
+#driverSearchbtn{
+    position: relative;
+    top: -38px;
+    left: 167px;
+}
+#driverDiv{
+    position: relative;
+    top: 136px;
+    padding: 0px 67px;
+}
+#driverTable{
+    position: relative;
+    top: -105px;
+    padding: 20px;
+}
+/*                                 */
+#admin_Order_Page{
+    width: 100%;
+    height: 100vh;
+}
+#cover6{
+    width: 80%;
+    height: 77%;
+    position: relative;
+    margin: auto;
+    top: 117px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+#orderTable{
+    padding: 80px;
+    position: relative;
+    bottom: 557px;
+}
+#admin_Order_Page img{
+    position: relative;
+    height: 77vh;
+    filter: brightness(0.9);
+}
+#btnOrdersRefresh{
+    position: relative;
+    top: -201px;
+    left: 1038px;
+}
+
+/*                            */
+#admin_Payment_Page{
+    width: 100%;
+    height: 100vh;
+}
+#cover7{
+    width: 80%;
+    height: 77%;
+    position: relative;
+    margin: auto;
+    top: 117px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9
+}
+#paymentTable{
+    padding: 80px;
+    position: relative;
+    bottom: 557px;
+}
+
+#admin_Payment_Page img{
+    position: relative;
+    height: 77vh;
+    filter: brightness(0.9);
+}
+

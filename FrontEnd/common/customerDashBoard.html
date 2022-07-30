@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerDashBoard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/boostrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/style/customer.css">
+    <link rel="stylesheet" href="../assets/style/navigation.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Jost:wght@100;200;300;400;500;600;700;800;900&family=Karla:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+
+</head>
+
+<!--Navigation-->
+<header>
+    <ul class="navlist">
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="#customerProfile">My Profile</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="#customer_Car">Cars</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="#bookingRequest">Orders</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="#payment">Payment</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="../index.html">Log Out</a></li>
+    </ul>
+</header>
+
+<body>
+<main>
+<!--    My Profile-->
+    <section id="customerProfile">
+        <div id="cover1">
+            <div style="display: block" id="custProfilePage" class="p-1">
+                <div class="container-fluid mt-1">
+                    <div class="col-lg-12 p-0">
+                        <div class="row">
+                            <div class="col">
+                                <div class="card shadow mb-3">
+                                    <div class="card-header py-3">
+                                        <p class="m-0 font-weight-bold">Profile Settings</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-row">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label><strong>ID</strong></label>
+                                                        <input id="custId"
+                                                               class="form-control"
+                                                               type="text"
+                                                               placeholder="C001"
+                                                               name="id"
+                                                               onkeypress="searchCustomerProfile();"
+                                                        >
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <label><strong>Name</strong></label>
+                                                        <input id="custName"
+                                                               class="form-control"
+                                                               type="text"
+                                                               placeholder="user.name"
+                                                               name="name">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Address</strong></label>
+                                                        <input id="custAddress"
+                                                               class="form-control"
+                                                               type="text"
+                                                               placeholder="user.address"
+                                                               name="address">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Email</strong></label>
+                                                        <input id="custEmail"
+                                                               class="form-control"
+                                                               type="email"
+                                                               placeholder="user@example.com"
+                                                               name="email">
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>NIC</strong></label>
+                                                        <input id="custNic"
+                                                               class="form-control"
+                                                               type="text"
+                                                               placeholder="customer.nic"
+                                                               name="nic">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Driving License</strong></label>
+                                                        <input id="custDl"
+                                                               class="form-control"
+                                                               type="text"
+                                                               placeholder="user.driving license"
+                                                               name="drivinglic">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Contact</strong></label>
+                                                        <input id="custContact"
+                                                               class="form-control"
+                                                               type="text"
+                                                               placeholder="07# #######"
+                                                               name="contact">
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="form-group">
+                                                        <label><strong>Password</strong></label>
+                                                        <input id="custPassword"
+                                                               class="form-control"
+                                                               type="password"
+                                                               placeholder="*****"
+                                                               name="password">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group mb-2">
+                                                <button id="btnCustomerUpdate" class="btn  ml-2 btn-sm text-white" type="button"
+                                                        style="background-color: #16a085">
+                                                    Update
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="card mb-3">
+                                    <div class="card-body text-center shadow">
+                                        <img class="rounded-circle mb-3 mt-3" src="../assets/images/other/account.png" width="170"
+                                             height="170"/>
+                                        <div class="mb-3">
+                                            <button class="btn btn-sm mb-2 mt-2 text-white" type="button"
+                                                    style="background-color: #16a085" id=btn_customer_change_pic">
+                                                Change Photo
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!--    Cars-->
+    <section id="customer_Car">
+        <div id="cover4">
+
+            <section id="cust_CarTable"  class="mt-5">
+                <table class="table table table-primary table table-bordered">
+                    <thead id="tblCarHeader">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">No Of Passengers</th>
+                        <th scope="col">Transmission</th>
+                        <th scope="col">Car Type</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Fuel Type</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblCarBody">
+
+                    </tbody>
+                </table>
+            </section>
+
+            <button type="button" class="btn btn-warning" id="btnCarsRefresh" >Refresh</button>
+
+        </div>
+    </section>
+
+
+    <!--    Orders Section-->
+    <section id="bookingRequest">
+        <div id="cover2">
+            <form class="row g-3">
+
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="custBookingID" placeholder="B###" >
+                </div>
+
+                <div class="col-md-2">
+                    <select class="form-select" aria-label="Default select example" id="driver">
+                        <option selected>Driver</option>
+                        <option value="1"> </option>
+                        <option value="2"> </option>
+                        <option value="3"> </option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <select class="form-select" aria-label="Default select example" id="carType">
+                        <option selected>Car Type</option>
+                        <option value="1">General </option>
+                        <option value="2">Premium </option>
+                        <option value="3">Luxury </option>
+                    </select>
+                </div>
+
+
+                <div class="form-floating col-md-3">
+                    <input type="date" class="form-control  rounded-7" id="pickupDate"
+                           placeholder="Name : ">
+                    <label for="pickupDate" class="overflow-hidden">Pickup Date</label>
+                </div>
+
+                <div class="form-floating col-md-3">
+                    <input type="date" class="form-control  rounded-7" id="returnDate"
+                           placeholder="Name : ">
+                    <label for="returnDate" class="overflow-hidden">Return Date</label>
+                </div>
+
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="carid" placeholder="Car ID" >
+                </div>
+
+
+                <div class="row">
+                    <div class="col-2" style="display: none">
+                        <div class="form-group" >
+                            <label><strong>Total</strong></label>
+                            <input
+                                    id="Total"
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="Rs."
+                                    name="total">
+                        </div>
+                    </div>
+                    <div class="col-2" style="display: none" >
+                        <div class="form-group">
+                            <label><strong>carPrice</strong></label>
+                            <input
+                                    id="carPrice"
+                                    class="form-control"
+                                    type="text"
+                                    placeholder="Rs."
+                                    name="total">
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+            <section  class="mt-5">
+                <table class="table table table-primary table table-bordered">
+                    <thead id="tblCustOrder">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">No Of Passengers</th>
+                        <th scope="col">Transmission</th>
+                        <th scope="col">Car Type</th>
+                        <th scope="col">Color</th>
+                        <th scope="col">Fuel Type</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tblOrderBody">
+                    </tbody >
+                </table>
+            </section>
+
+            <button type="button" class="btn btn-info" id="btnPlaceOrder" >Place Order</button>
+
+        </div>
+
+    </section>
+
+
+    <!--    payment Section?-->
+    <section id="payment">
+        <div id="cover3">
+
+            <img src="../assets/images/other/Img7.jpg">
+
+            <section id="paymentTable"  class="mt-5">
+                <table class="table table table-primary table table-bordered">
+                    <thead id="tblPayHeader">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tblPayBody">
+                    </tbody >
+                </table>
+            </section>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="../assets/boostrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/customer/customer.js"></script>
+</body>
+</html>

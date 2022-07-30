@@ -11,4 +11,8 @@ public interface CustomerService {
     CustomerDTO searchCustomer(String id);
     List<CustomerDTO> getAllCustomers();
     CustomerDTO findLastCustomerById();
+
+    boolean findByUserNameAndPassword(String userName, String password);
+
+    boolean findByUserName(String userName);
 }

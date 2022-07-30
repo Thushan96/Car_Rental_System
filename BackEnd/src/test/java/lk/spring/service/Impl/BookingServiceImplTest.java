@@ -30,7 +30,7 @@ public class BookingServiceImplTest {
         CustomerDTO custdto=new CustomerDTO();
         custdto.setCustomerID("C001");
         CarDTO cardto=new CarDTO();
-        cardto.setCarID("C-001");
+        cardto.setCarId("C-001");
         DriverDTO driverDTO=new DriverDTO();
         driverDTO.setDriverID("D001");
 

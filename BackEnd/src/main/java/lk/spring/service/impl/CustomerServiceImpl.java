@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -72,6 +73,19 @@ public class CustomerServiceImpl implements CustomerService {
         }else{
             return mapper.map(customerRepo.findTopByOrderByCustomerIDDesc(),CustomerDTO.class);
         }
+    }
+
+
+    @Override
+    public boolean findByUserName(String userName) {
+        Optional<Customer> byUserName = customerRepo.findByUserName(userName);
+        return byUserName.isPresent();
+    }
+
+    @Override
+    public boolean findByUserNameAndPassword(String userName, String password) {
+        Optional<Customer> byUserNameAndPassword = customerRepo.findByUserNameAndPassword(userName, password);
+        return byUserNameAndPassword.isPresent();
     }
 
 }

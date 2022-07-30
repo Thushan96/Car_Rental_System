@@ -1,0 +1,64 @@
+/*LogIn Form*/
+.logInContainer{
+    overflow:hidden;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    /*background-color:#9055FF;*/
+}
+.logIn-Left{
+    height:100%;
+    width: 60%;
+    /*background-color: #feca57;*/
+}
+.logIn-Left img{
+    width: 801px;
+    position: relative;
+    left: 146px;
+}
+.logIn-Right{
+    height: 100%;
+    width: 40%;
+    /*backgroundColor: #00d2d3;*/
+}
+.form-textfield{
+    position: absolute;
+    width: 445px;
+    right: 69px;
+    top: 252px;
+}
+#txtUserName{
+    padding: 15px 20px;
+    margin: 8px 0;
+}
+#txtPassword{
+    padding: 15px 20px;
+    margin: 35px 0;
+}
+#btn_Login{
+    width: 40%;
+    position: absolute;
+    left: 116px
+}
+.logIn-Right hr{
+    position: relative;
+    top:62px;
+}
+.logIn-Right i{
+    position: relative;
+    top: 62px;
+    left: 134px;
+}
+#newAccount{
+    position: relative;
+    top: 69px;
+    width: 368px;
+    left: 32px;
+}
+.logIn-Right h2{
+    position: relative;
+    top: 152px;
+    left: 126px;
+}

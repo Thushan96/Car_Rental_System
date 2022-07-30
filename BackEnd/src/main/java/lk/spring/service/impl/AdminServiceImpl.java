@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -62,5 +63,21 @@ public class AdminServiceImpl implements AdminService {
     public List<AdminDTO> getAllAdmin() {
         return mapper.map(adminRepo.findAll(), new TypeToken<List<AdminDTO>>() {
         }.getType());
+    }
+
+    @Override
+    public boolean findByUserNameAndPassword(String userName, String password) {
+        Optional<Admin> byUserNameAndPassword = adminRepo.findByUserNameAndPassword(userName,password);
+        return byUserNameAndPassword.isPresent();
+
+    }
+
+    @Override
+    public boolean findByUserName(String userName) {
+        Optional<Admin> byUserName = adminRepo.findByUserName(userName);
+        return byUserName.isPresent();
+
+
+
     }
 }

@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin-DashBoard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/boostrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/style/admin.css">
+    <link rel="stylesheet" href="../assets/style/navigation.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Jost:wght@100;200;300;400;500;600;700;800;900&family=Karla:ital,wght@0,200;1,200&display=swap" rel="stylesheet">
+
+</head>
+
+<!--Navigation-->
+<header>
+    <ul class="navlist">
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="#admin_Home_Page">Admin DashBoard</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_profile_Page" href="#admin_profile_Page">My Profile</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Customer_Page" href="#admin_Customer_Page">Customers</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Car_Page" href="#admin_Car_Page">Cars</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Driver_Page" href="#admin_Driver_Page">Drivers</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Order_Page" href="#admin_Order_Page">Orders</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Payment_Page" href="#admin_Payment_Page">Payments</a></li>
+    </ul>
+</header>
+
+<body>
+<main>
+<!--Admin DashBoard-->
+   <section id="admin_Home_Page">
+
+       <div id="cover1">
+
+
+           <div id="content" class="m-0 p-0">
+               <nav class="navbar navbar-light navbar-expand bg-white shadow topbar static-top">
+                   <div class="container-fluid">
+                       <button class="btn btn-link d-md-none rounded-circle mr-3" type="button"></button>
+                       <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                           <div class="input-group"><input class="bg-light form-control border-0 small" type="text"
+                                                           placeholder="Search for ...">
+                               <div class="input-group-append">
+                                   <button class="btn py-0" type="button"><img src="../assets/images/other/searchIcon.ico">
+                                   </button>
+                               </div>
+                           </div>
+                       </form>
+                       <div class="nav-item dropdown no-arrow">
+                           <a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#">
+                               <span class="d-none d-lg-inline mr-2 text-gray-600 small" style="font-size: 1rem">Thushan Madhulakshitha</span>
+                               <img class="rounded-circle img-profile" src="../assets/images/other/businessmanIcon.png"></a>
+                           <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                               <a class="dropdown-item" role="presentation" style="cursor: pointer" id="btnAdminProfile">Profile</a>
+                               <div class="dropdown-divider">
+                               </div>
+                               <a class="dropdown-item" href="../index.html" role="presentation" style="cursor: pointer"
+                                  id="btnAdminLogout">Logout</a></div>
+
+                       </div>
+                   </div>
+               </nav>
+           </div>
+
+               <div class="container-fluid">
+                   <div class="row mt-4">
+                       <div class="col-md-6 col-xl-3 mb-4">
+                           <div class="card shadow border-left-warning py-2">
+                               <div class="card-body">
+                                   <div class="row align-items-center no-gutters">
+                                       <div class="col mr-2">
+                                           <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                               <span>Customers</span>
+                                           </div>
+                                           <div class="text-dark font-weight-bold h5 mb-0"><span id="TxtCustomerCount">7</span>
+                                           </div>
+                                       </div>
+                                       <div class="col-auto"><img id="custom_pic"
+                                                                  src="../assets/images/other/customerIcon.png">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-xl-3 mb-4">
+                           <div class="card shadow border-left-warning py-2">
+                               <div class="card-body">
+                                   <div class="row align-items-center no-gutters">
+                                       <div class="col mr-2">
+                                           <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                               <span>Cars</span>
+                                           </div>
+                                           <div class="text-dark font-weight-bold h5 mb-0"><span
+                                                   id="txtCarCount">15</span></div>
+                                       </div>
+                                       <div class="col-auto"><img id="car_pic"
+                                                                  src="../assets/images/other/carIcon.png">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-xl-3 mb-4">
+                           <div class="card shadow border-left-warning py-2">
+                               <div class="card-body">
+                                   <div class="row align-items-center no-gutters">
+                                       <div class="col mr-2">
+                                           <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                               <span>Drivers</span></div>
+                                           <div class="row no-gutters align-items-center">
+                                               <div class="col-auto">
+                                                   <div class="text-dark font-weight-bold h5 mb-0" id="txtDriverCount">
+                                                       5<span></span>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       <div class="col-auto"><img id="driver_pic"
+                                                                  src="../assets/images/other/driverIcon.png">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-md-6 col-xl-3 mb-4">
+                           <div class="card shadow border-left-warning py-2">
+                               <div class="card-body">
+                                   <div class="row align-items-center no-gutters">
+                                       <div class="col mr-2">
+                                           <div class="text-uppercase text-warning font-weight-bold text-xs mb-1">
+                                               <span>Orders</span>
+                                           </div>
+                                           <div class="text-dark font-weight-bold h5 mb-0"><span
+                                                   id="txtOrderCount">10</span></div>
+                                       </div>
+                                       <div class="col-auto"><img id="order_pic"
+                                                                  src="../assets/images/other/purchaseOrderIcon.png">
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+
+
+                   <div class="adminHomePageSection">
+                       <div class="row">
+                           <div class="col-lg-7 col-xl-8">
+                               <div class="card shadow mb-4">
+                                   <div class="card-header d-flex justify-content-between align-items-center">
+                                       <h6 class="text-primary font-weight-bold m-0">Overview</h6>
+                                       <div class="dropdown no-arrow">
+                                           <button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button">
+                                               <i class="fas fa-ellipsis-v text-gray-400"></i>
+                                           </button>
+                                           <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in" role="menu">
+                                               <p class="text-center dropdown-header">dropdown header:</p>
+                                               <a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a>
+                                               <a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                               <div class="dropdown-divider">
+                                               </div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                       </div>
+                                   </div>
+                                   <div class="card-body" id="chart1">
+                                       <div class="chart-area mt-3">
+                                           <canvas data-bs-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;]
+                                            ,&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;padding&quot;:20}}]}}}"></canvas></div>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="col-lg-7 col-xl-4">
+                               <div class="card shadow">
+                                   <div class="card-header d-flex justify-content-between align-items-center">
+                                       <h6 class="text-primary font-weight-bold m-0">Revenue Sources</h6>
+                                       <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" data-toggle="dropdown" aria-expanded="false" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                           <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"
+                                                role="menu">
+                                               <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" role="presentation" href="#">&nbsp;Action</a><a class="dropdown-item" role="presentation" href="#">&nbsp;Another action</a>
+                                               <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#">&nbsp;Something else here</a></div>
+                                       </div>
+                                   </div>
+                                   <div class="card-body">
+                                       <div class="chart-area"><canvas data-bs-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Direct&quot;,&quot;Social&quot;,&quot;Referral&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#4e73df&quot;,&quot;#1cc88a&quot;,&quot;#36b9cc&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false},&quot;title&quot;:{}}}"></canvas></div>
+                                       <div class="text-center small">
+                                           <span class="mr-2"><i class="fas fa-circle text-primary"></i>&nbsp;Cars</span>
+                                           <span class="mr-2"><i class="fas fa-circle text-success"></i>&nbsp;Drivers</span>
+                                           <span class="mr-2"><i class="fas fa-circle text-info"></i>&nbsp;Customers</span>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+
+                   </div>
+               </div>
+               </div>
+
+
+
+
+       </div>
+
+   </section>
+
+<!--Admin Profile-->
+<section id="admin_profile_Page">
+        <div id="cover2">
+            <div id="card" class="card">
+                <div class="card-header">
+                   Admin Profile Setting
+                </div>
+                <div class="card-body">
+
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adminID" name="adminID" placeholder="A###" value="A001">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adminEmail" name="email" placeholder="user@example.com" value=thushanmadhulakshitha@gmail.com">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adminName" name="username" placeholder=" user.name" value="Thushan">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="password" class="form-control" id="adminPassword" name="password"  placeholder="password" value="1234">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="password" class="form-control" id="adminConfirmPassword" name="confirm_password"  placeholder="confirm password" value="1234">
+                    </div>
+                    <a id="btnAdminUpdate" href="#" class="btn btn-info">Update</a>
+
+<!--                    Image Card-->
+                    <div id="adminProfileImage" class="card" style="width: 18rem;">
+                        <img src="../assets/images/other/account.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text"> <a id="btnChange" href="#" class="btn btn-warning">Change Photo</a>.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+<!--Customer Section-->
+<section id="admin_Customer_Page">
+    <div id="cover3">
+
+        <div id="customerSearch" class="col-md-2" >
+            <input class="form-control me-2" type="search" id="searchCustomer" placeholder="Search" aria-label="Search">
+            <button id="customerSearchbtn" class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+
+        <div id="customerDiv">
+            <form class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustId" placeholder=" C###">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustName" placeholder="Name">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustAddress" placeholder="Address">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustEmail" placeholder="E-Mail">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustNic" placeholder="NIC">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustDl" placeholder="Driving License">
+                </div>
+                <div class="col-md-3">
+                    <input type="text" class="form-control" id="adCustContact" placeholder="Contact">
+                </div>
+                <div class="col-md-3">
+                    <input type="password" class="form-control" id="adCustPassword" placeholder="Password">
+                </div>
+
+
+                <div id="customercrudBtn" class="row m-3" >
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                        <button  id="btnAdminCustomerSave" type="button" class="btn btn-primary">Save</button>
+                        <button  id="btnAdminCustomerUpdate" type="button" class="btn btn-success">Update</button>
+                        <button  id="btnAdminCustomerDelete" type="button" class="btn btn-danger">Delete</button>
+                        <button  id="btnAdminCustomerGetAll" type="button" class="btn btn-info">Get All</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <section id="customerTable" class="mt-5">
+            <table class="table table table-primary table table-bordered">
+                <thead id="tblCustomerHeader">
+                <tr>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Nic No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Contact</th>
+                    <th scope="col">E-mail</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Driving License Number</th>
+                </tr>
+                </thead>
+                <tbody id="tblCustomerBody">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                </tbody >
+            </table>
+        </section>
+
+    </div>
+
+</section>
+
+<!--Car Section    -->
+<section id="admin_Car_Page">
+    <div id="cover4">
+        <div id="carSearch" class="col-md-2" >
+            <input class="form-control me-2" type="search" id="searchCar" placeholder="Search" aria-label="Search">
+            <button id="btncarSearch" class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+        <div id="carDiv">
+            <form class="row g-3">
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="adCarId" name="id"  placeholder="C###">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" class="form-control" id="adCarRegistration" name="reg"  placeholder="Registration No:">
+                </div>
+
+                <div class="col-md-2">
+                    <select id="adCarBrand" class="form-select">
+                        <option value="-1">Brand</option>
+                        <option value="BM2">BM2</option>
+                        <option value="Mazda">Mazda</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Volvo">Volvo</option>
+                        <option value="Tesla">Tesla</option>
+                        <option value="Audi">Audi</option>
+                    </select>
+
+                </div>
+                <div class="col-md-2">
+                    <select id="adCarColor" class="form-select">
+                        <option selected value="-1">Choose Color</option>
+                        <option>Red</option>
+                        <option>Black</option>
+                        <option>Brown</option>
+                        <option>White</option>
+                        <option>Silver</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="adCarType" class="form-select">
+                        <option selected value="-1">Car Type</option>
+                        <option>General</option>
+                        <option>Premium</option>
+                        <option>Luxury</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="adCarPassengers" class="form-select">
+                        <option selected value="-1">Passengers</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="adCarFuel" class="form-select">
+                        <option selected value="-1">Fuel Type</option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <select id="adCarTransmission" class="form-select">
+                        <option selected value="-1">Transmission Type</option>
+                        <option>Auto</option>
+                        <option>Manual</option>
+                    </select>
+                </div>
+                <div id="rentPrices1" class="col-md-2">
+                    <input type="text" class="form-control" id="adCarExtraKm" placeholder="Price For Extra Km">
+                </div>
+                <div id="rentPrices3" class="col-md-3">
+                    <input type="text" class="form-control" id="adCarDamage" placeholder="Loss Damage Wavier(Rs)">
+                </div>
+                <div  class="col-md-2">
+                    <input type="text" class="form-control" id="adCarDailyRate" placeholder="Daily Rates(Rs.)">
+                </div>
+                <div  class="col-md-2">
+                    <input type="text" class="form-control" id="adCarMonthlyRate" placeholder="Monthly Rates(Rs.)">
+                </div>
+                <div  class="col-md-2">
+                    <input type="text" class="form-control" id="adCarMillagePrice" placeholder="Free Millage Price">
+                </div>
+                <div  class="col-md-2">
+                    <input type="text" class="form-control" id="adCarDuration" placeholder="Free Millage Duration">
+                </div>
+                <div id="crudBtn" class="row m-3" >
+                    <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                        <button id="btnAdminCarSave" type="button" class="btn btn-primary">Save</button>
+                        <button id="btnAdminCarUpdate" type="button" class="btn btn-success">Update</button>
+                        <button id="btnAdminCarDelete" type="button" class="btn btn-danger">Delete</button>
+                        <button id="btnAdminCarGetAll" type="button" class="btn btn-info">Get All</button>
+                        <button id="btnAdminCarClearAll" type="button" class="btn btn-warning">Clear All</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <section id="carTable" class="mt-5">
+            <table class="table table table-primary table table-bordered">
+                <thead id="tblCarHeader">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Reg No:</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Car Type</th>
+                    <th scope="col">No of Passengers</th>
+                    <th scope="col">Transmission</th>
+                    <th scope="col">Fuel Type</th>
+                    <th scope="col">Colour</th>
+                </tr>
+                </thead>
+                <tbody id="tblCarBody">
+                </tbody >
+            </table>
+        </section>
+
+    </div>
+
+</section>
+
+<!--Driver Section-->
+<section id="admin_Driver_Page">
+    <div id="cover5">
+
+
+        <div id="driverDiv">
+                <form class="row g-3">
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adDriverId" placeholder="D###">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adDriverName" placeholder="Driver Full Name">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adDriverNIC" placeholder="NIC">
+                    </div>
+                    <div class="col-md-3">
+                        <input type="text" class="form-control" id="adDriverContact" placeholder="Contact Nu:">
+                    </div>
+
+                    <div class="col-md-3">
+                        <input type="password" class="form-control" id="adDriverPassword" placeholder="password">
+                    </div>
+
+
+
+                    <div id="drivercrudBtn" class="row m-3" >
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                            <button id="btnAdminDriverSave"    type="button" class="btn btn-primary">Save</button>
+                            <button id="btnAdminDriverUpdate"  type="button" class="btn btn-success">Update</button>
+                            <button id="btnAdminDriverDelete"  type="button" class="btn btn-danger">Delete</button>
+                            <button id="btnAdminDriverGetAll"  type="button" class="btn btn-info">Get All</button>
+
+                        </div>
+                    </div>
+
+                    <div id="driverSearch" class="col-md-2" >
+                        <input class="form-control me-2" type="search" id="driverCustomer" placeholder="Search" aria-label="Search">
+                        <button id="driverSearchbtn" class="btn btn-outline-success" type="submit">Search</button>
+                    </div>
+
+                </form>
+
+
+        <section id="driverTable" class="mt-5">
+                <table class="table table table-primary table table-bordered">
+                    <thead id="tblDriver">
+                    <tr>
+                        <th scope="col">Driver ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">NIC</th>
+                        <th scope="col">Contact</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tblDriverBody">
+
+
+                    </tbody >
+                </table>
+            </section>
+
+    </div>
+    </div>
+</section>
+
+<!--    Order Section-->
+<section id="admin_Order_Page">
+        <div id="cover6">
+
+            <button type="button" class="btn btn-warning" id="btnOrdersRefresh" >Refresh</button>
+
+            <img src="../assets/images/other/Image10.jpg">
+
+            <section id="orderTable" class="mt-5">
+                <table class="table table table-primary table table-bordered">
+                    <thead id="tblOrders">
+                    <tr>
+                        <th scope="col">Booking ID</th>
+                        <th scope="col">Car ID</th>
+                        <th scope="col">Driver ID</th>
+                        <th scope="col">Customer ID</th>
+                        <th scope="col">Order Date</th>
+                        <th scope="col">Pickup Date</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tblOrderBody">
+                    </tbody >
+                </table>
+            </section>
+
+        </div>
+</section>
+
+<!--Payment Section-->
+<section id="admin_Payment_Page">
+    <div id="cover7">
+
+        <img src="../assets/images/other/Img6.png">
+
+        <section id="paymentTable" class="mt-5">
+            <table class="table table table-primary table table-bordered">
+                <thead id="tblPayment">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Booking ID</th>
+                </tr>
+                </thead>
+                <tbody id="tblPaymentBody">
+                <tr>
+                    <td></td><td></td><td></td><td></td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                </tbody >
+            </table>
+        </section>
+    </div>
+
+</section>
+
+
+</main>
+
+<script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="../assets/boostrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/admin/Admin.js"></script>
+<script src="../assets/js/admin/AdminProfile.js"></script>
+<script src="../assets/js/admin/AdminCar.js"></script>
+<script src="../assets/js/admin/AdminCustomers.js"></script>
+<script src="../assets/js/admin/AdminDriver.js"></script>
+<script src="../assets/js/admin/AdminOrder.js"></script>
+<script src="../assets/js/admin/AdminPayments.js"></script>
+
+<script src="../assets/js/admin/chart.min.js"></script>
+<script src="../assets/js/admin/bs-init.js"></script>
+<script src="../assets/js/admin/theme.js"></script>
+
+</body>
+</html>

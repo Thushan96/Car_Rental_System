@@ -10,4 +10,8 @@ public interface LoginService {
     void deleteLogin(String id);
     LoginDTO searchLogin(String id);
     List<LoginDTO> getAllLogins();
+
+    String getLastID();
+
+    String genarateLogID();
 }

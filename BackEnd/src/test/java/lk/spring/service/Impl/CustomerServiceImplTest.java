@@ -42,9 +42,9 @@ public class CustomerServiceImplTest {
 
     @Test
     void saveCustomers(){
-        CustomerDTO customerDTO = new CustomerDTO("COO1", "Gaara", "0776890675", "@GMAIL", "GALLE", "SDASD", "8989", "SDFSD", "1223");
-        CustomerDTO customerDTO2 = new CustomerDTO("COO2", "Beast", "0776890675", "@GMAIL", "GALLE", "SDASD", "8989", "SDFSD", "1223");
-        customerService.saveCustomer(customerDTO);
-        customerService.saveCustomer(customerDTO2);
+//        CustomerDTO customerDTO = new CustomerDTO("COO1", "Gaara", "0776890675", "@GMAIL", "GALLE", "SDASD", "8989", "SDFSD", "1223");
+//        CustomerDTO customerDTO2 = new CustomerDTO("COO2", "Beast", "0776890675", "@GMAIL", "GALLE", "SDASD", "8989", "SDFSD", "1223");
+//        customerService.saveCustomer(customerDTO);
+//        customerService.saveCustomer(customerDTO2);
     }
 }

@@ -1,8 +1,6 @@
 package lk.spring.service.impl;
 
-import lk.spring.dto.DriverDTO;
 import lk.spring.dto.LoginDTO;
-import lk.spring.entity.Driver;
 import lk.spring.entity.Login;
 import lk.spring.repo.LoginRepo;
 import lk.spring.service.LoginService;
@@ -64,5 +62,30 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public List<LoginDTO> getAllLogins() {
         return mapper.map(loginRepo.findAll(),new TypeToken<List<LoginDTO>>(){}.getType());
+    }
+
+    @Override
+    public String getLastID() {
+        String lastID = loginRepo.getLastID();
+        return lastID;
+    }
+
+    @Override
+    public String genarateLogID() {
+        String lastID = getLastID();
+        if (lastID != null) {
+            String[] s = lastID.split("L");
+            int value = Integer.parseInt(s[1]);
+            value++;
+            if (value < 10) {
+                return "L00" + value;
+            } else if (value < 100) {
+                return "L0" + value;
+            } else {
+                return "L" + value;
+            }
+        } else {
+            return "L001";
+        }
     }
 }

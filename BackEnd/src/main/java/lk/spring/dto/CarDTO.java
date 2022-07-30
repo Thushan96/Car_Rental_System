@@ -8,23 +8,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class CarDTO {
-    private String carID;
-//    private String registrationNumber;
-    private String brand;
-    private String type;
-    private int numberOfPassengers;
-    private String transmissionType;
-    private String fuelType;
-    private String colour;
-    private double dailyRate;
-    private double monthlyRate;
-//    private double freeMillagePrice;
-//    private String freeMillageDuration;
-private double freeKmforMonth;
-    private double freeKmforDay;
-    private double lossDamageWaiver;
-    private double priceForExtraKM;
-    private String status;
-    private double completeKm;
+    private String carId;
+    private String carBrand;
+    private String carType;
+    private int carNmbOfPassengers;
+    private String carTransmissionType;
+    private String carFuelType;
+    private double carPriceForExtraKM;
+    private String carRegistrationNumber;
+    private String carColour;
+    private double carDailyRate;
+    private double carMonthlyRate;
+    private double carLossDamageWaiver;
+    private double carFreeMillagePrice;
+    private String carFreeMillageDuration;
+
 
 }

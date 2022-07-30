@@ -1,0 +1,220 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    padding: 30px 18%;
+    transition: .3s;
+}
+#db_btn_signIn{
+    width: 110px;
+    height: 35px;
+    position: fixed;
+    left: 82%;
+    top: 2.6%;
+    margin: 0;
+    padding: 0;
+    border-color: white;
+}
+#db_btn_signIn:hover {
+    background-color: white;
+    color: #f39c12;
+}
+
+#db_btn_sign_a {
+    text-decoration: none;
+    color: white;
+}
+
+#db_btn_sign_a:hover {
+    color: #f39c12;
+}
+
+#db_btn_regi_a {
+    text-decoration: none;
+    color: white;
+}
+
+#db_btn_regi_a:hover {
+    color: #f39c12;
+}
+
+#db_btn_regi {
+    width: 120px;
+    height: 35px;
+    position: fixed;
+    left: 91%;
+    top: 2.6%;
+    margin: 0;
+    padding: 0;
+    color: #f39c12;
+    border-color: white;
+}
+
+#db_btn_regi:hover {
+    background-color: white;
+    color: #f39c12;
+}
+
+
+/*              */
+#container{
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.leftSide{
+    display: flex;
+    height:100%;
+    width: 60%;
+}
+.rightSide{
+    display: flex;
+    height: 100%;
+    width: 40%;
+    background-color: #b388ff;
+    z-index: -5;
+}
+#board {
+    width: 60vh;
+    height: 20vh;
+    position: absolute;
+    top: 389px;
+    left: 155px;
+    background-color: #b388ff;
+    border-radius: 12px;
+    padding: 30px 30px 30px 30px;
+    cursor: pointer;
+    font-style: italic;
+}
+
+/*         */
+.shopContainer {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+#cover{
+    width: 90%;
+    margin: auto;
+
+}
+#generalcars {
+    display: grid;
+    grid-template-columns: repeat(4,328px);
+    grid-gap: 2rem;
+    align-items: center;
+    text-align: center;
+}
+
+#premiumcars{
+    display: grid;
+    grid-template-columns: repeat(4,328px);
+    grid-gap: 2rem;
+    align-items: center;
+    text-align: center;
+
+}
+#luxurycars{
+    display: grid;
+    grid-template-columns: repeat(4,328px);
+    grid-gap: 2rem;
+    align-items: center;
+    text-align: center;
+}
+/*Footer*/
+
+#footer{
+    position: relative;
+    top: 934px;
+    padding: 50px 0 30px;
+    width: 100%;
+    height: 38vh;
+    /*background-color: #D6A2E8;*/
+}
+
+hr{
+    width: 100%;
+    border: 0;
+    border-top: 1px solid #6610f2;
+}
+.footer-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footer-left-col{
+    flex-basis: 50%;
+    margin-top: 60px;
+}
+.footer-right-col{
+    flex-basis: 35%;
+}
+.footer-links{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.link-title h4{
+    color: #6610f2;
+    margin-bottom: 20px;
+}
+.link-title small{
+    font-size: 13px;
+    color: #777;
+}
+.footer-info{
+    display: flex;
+    align-items:flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.footer-logo img{
+    width: 100px;
+}
+.footer-logo button{
+    padding: 12px 38px;
+    margin-top: 20px;
+    font-size: 10px;
+}
+.copyright-text,.footer-logo{
+    flex-basis: 40px;
+}
+.social-icons{
+    width: 50px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.social-icons img{
+    display: block;
+    width: 20px;
+    margin: 0 auto 20px;
+    cursor: pointer;
+}
+
+
+
+
+
+

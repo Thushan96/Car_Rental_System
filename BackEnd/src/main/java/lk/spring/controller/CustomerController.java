@@ -9,8 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("customer")
 @CrossOrigin
+@RequestMapping("customer")
 public class CustomerController {
 
     @Autowired
@@ -45,8 +45,8 @@ public class CustomerController {
         return new ResponseUtil(200,"Deleted",null);
     }
 
-    @GetMapping(params = {"cusId"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getLastCustomer(){
+    @GetMapping(path = "lastId",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getLastCID(){
         CustomerDTO customerById = customerService.findLastCustomerById();
         String id=null;
         if (customerById!= null) {

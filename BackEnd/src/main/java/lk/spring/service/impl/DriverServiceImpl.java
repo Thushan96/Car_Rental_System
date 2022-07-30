@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -73,4 +74,16 @@ public class DriverServiceImpl implements DriverService {
             return mapper.map(driverRepo.findTopByOrderByDriverIDDesc(),DriverDTO.class);
         }
     }
+    @Override
+    public boolean findByUserName(String userName) {
+        Optional<Driver> byUserName = driverRepo.findByUserName(userName);
+        return byUserName.isPresent();
+    }
+
+    @Override
+    public boolean findByUserNameAndPassword(String userName, String password) {
+        Optional<Driver> byUserNameAndPassword = driverRepo.findByUserNameAndPassword(userName, password);
+        return byUserNameAndPassword.isPresent();
+    }
+
 }

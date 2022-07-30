@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../assets/boostrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../index.html">
+    <link rel="stylesheet" href="../assets/style/register.css">
+</head>
+<body>
+
+<section id="registerPage">
+
+    <div id="cover">
+
+
+        <img id="registrationImage" src="../assets/images/other/registrationImage.png">
+
+        <div id="registerDiv">
+            <form class="row g-3">
+                <div class="col-md-3">
+                    <input type="text" class="form-control"  placeholder="Name"  id="inputName">
+                </div>
+
+                <div class="col-md-3">
+                    <input type="text" class="form-control"  placeholder="Contact No." id="inputContactNo">
+                </div>
+
+                <div class="col-md-6">
+                    <input type="text" class="form-control" placeholder="Address" id="inputAddress">
+                </div>
+
+                <div class="col-md-5">
+                    <input type="text" class="form-control"  placeholder="E-Mail"  id="inputEmail">
+                </div>
+
+                <div class="col-md-5">
+                    <input type="text" class="form-control"  placeholder="Driving License Number"  id="inputDrivingLicence">
+                </div>
+
+                <div class="col-md-5">
+                    <input type="text" class="form-control"  placeholder="NIC No"  id="inputNIC">
+                </div>
+
+                <div class="col-md-3">
+                    <input type="text" class="form-control"  placeholder="User Name"  id="inputUserName">
+                </div>
+
+                <div class="col-md-3">
+                    <input class="form-control" type="password" placeholder="Password" id="inputPassword">
+                </div>
+
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                     <span class="input-group-text"
+                           id="inputGroupFileAddon01">Upload NIC(Front)</span>
+                    </div>
+                    <div>
+                        <input class="form-control w-100" id="inputfile1" type="file">
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+
+                    <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="inputGroupFileAddon02">Upload NIC(Back)</span>
+                    </div>
+
+                    <div>
+                        <input class="form-control w-100" id="inputfile2" type="file">
+                    </div>
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                                        <span class="input-group-text"
+                                              id="inputGroupFileAddon03">Driving License</span>
+                    </div>
+                    <div>
+                        <input class="form-control w-100" id="inputfile3" type="file">
+                    </div>
+                </div>
+
+                <button id="btncreate" class="btn btn-success" type="button"> Create Account </a></button>
+
+                <div id="ftnPassword" class="text-center"><a class="small" href="">Forgottten Password?</a>
+                </div>
+
+                <div id="haveAccount" class="text-center"><a class="small" href="logIn.html">Already have an account? Login!</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<script src="../assets/jQuery/jquery-3.6.0.min.js"></script>
+<script src="../assets/boostrap/js/bootstrap.min.js"></script>
+<script src="../assets/js/script.js"></script>
+<script src="../assets/js/logIn/Register.js"></script>
+</body>
+</html>
