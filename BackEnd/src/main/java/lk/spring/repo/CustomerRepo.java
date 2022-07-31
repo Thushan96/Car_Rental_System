@@ -12,6 +12,8 @@ public interface CustomerRepo extends JpaRepository<Customer,String> {
 
     Optional<Customer> findByUserNameAndPassword(String userName, String password);
 
+    Customer getCustomerByUserName(String UserName);
+
 
 
 }

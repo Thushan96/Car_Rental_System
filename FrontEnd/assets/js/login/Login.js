@@ -45,6 +45,47 @@ $("#btn_Login").click(function () {
     }
 );
 
+function loginSave(role) {
+    let userName = $('#userName').val();
+    let password = $('#password').val();
+    $.ajax({
+        method: "post",
+        url: loginBaseurl,
+        contentType: "application/json",
+        async: false,
+        data: JSON.stringify(
+            {
+                loginID: getNewLogID(),
+                password: password,
+                userName: userName,
+                role: role
+            }
+        ),
+        success: function (response) {
+            console.log("login save method done");
+
+        }
+    });
+}
+
+getNewLogID();
+
+function getNewLogID() {
+    let LastLoginID = 1;
+    $.ajax({
+        method: "GET",
+        url: loginBaseurl+'/newLogId',
+        async: false,
+        success: function (response) {
+            LastLoginID = response.data;
+            console.log(LastLoginID + "LAST login ");
+        }
+    });
+    return LastLoginID;
+}
+
+
+
 $('#userName').on('keyup', function (event) {
     checkInputField();
 });
@@ -52,6 +93,7 @@ $('#userName').on('keyup', function (event) {
 $('#password').on('keyup', function (event) {
     checkInputField();
 });
+
 
 function checkInputField() {
     if ($('#userName').val() != "") {

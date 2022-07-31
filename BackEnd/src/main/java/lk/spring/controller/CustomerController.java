@@ -6,6 +6,7 @@ import lk.spring.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -37,6 +38,12 @@ public class CustomerController {
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCustomer(@PathVariable String id){
         return new ResponseUtil(200,"Ok",customerService.searchCustomer(id));
+    }
+
+    @GetMapping(path = "/get/{userName}")
+    public ResponseUtil getCustomer(@PathVariable String userName){
+        CustomerDTO dto = customerService.getCustomer(userName);
+        return new ResponseUtil(200,"Done",dto);
     }
 
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)

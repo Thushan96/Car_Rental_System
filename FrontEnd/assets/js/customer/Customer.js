@@ -1,3 +1,47 @@
+const loginBaseurl="http://localhost:8080/api/v1/login";
+const customerBaseUrl="http://localhost:8080/api/v1/customer";
+
+getLastLoginData();
+
+function getLastLoginData() {
+    $.ajax({
+        method: "GET",
+        url: loginBaseurl+'/lastLogUser',
+        async: false,
+        success: function (response) {
+            let userName = response.data;
+            console.log("userName login " + userName);
+            getAllCustomerData(userName);
+        }
+    });
+}
+
+function getAllCustomerData(userName) {
+    let customer;
+    $.ajax({
+        method: "GET",
+        url: customerBaseUrl+ '/get/' + userName,
+        async: false,
+        success: function (response) {
+            let data = response.data;
+            $('#custId').val(data.customerID);
+            $('#custName').val(data.name);
+            $('#custContact').val(data.contact);
+            $('#custEmail').val(data.email);
+            $('#custAddress').val(data.address);
+            $('#custDl').val(data.drivingLicenceNo);
+            $('#custNic').val(data.nicNo);
+            $('#custUserName').val(data.userName);
+            $('#custPassword').val(data.password);
+
+
+        }
+    });
+
+}
+
+
+
 //Start Customer Validation Section
 function checkValidationCustomerProfile() {
 
@@ -9,6 +53,7 @@ function checkValidationCustomerProfile() {
     let cDl = $('#custDl').val();
     let cContact = $('#custContact').val();
     let cPassword = $('#custPassword').val();
+    let cUserName = $('#custUserName').val();
 
     if (cId != "") {
         if (cName != "") {
@@ -17,14 +62,23 @@ function checkValidationCustomerProfile() {
                     if (cNic != "") {
                         if (cDl != "") {
                             if (cContact != "") {
-                                if (cPassword) {
-                                    return true;
-                                } else {
-                                    $('#custPassword').css({
+                                if (cUserName !="") {
+                                    if (cPassword) {
+                                        return true;
+                                    } else {
+                                        $('#custPassword').css({
+                                            'border': '2px #FF0000FF solid'
+                                        });
+                                        $('#custPassword').focus();
+                                        alert("Please Enter Password");
+                                        return false;
+                                    }
+                                }else {
+                                    $('#custUserName').css({
                                         'border': '2px #FF0000FF solid'
                                     });
-                                    $('#custPassword').focus();
-                                    alert("Please Enter Password");
+                                    $('#custUserName').focus();
+                                    alert("Please Enter Driver License");
                                     return false;
                                 }
                             } else {
@@ -88,7 +142,7 @@ function checkValidationCustomerProfile() {
 //End Customer Validation Section
 
 //Start Customer Save Section
-$('#btnCustSave').click(() => {
+$('#btnCustomerUpdate').click(() => {
 
     if (checkValidationCustomerProfile()) {
         let cId = $('#custId').val();
@@ -99,27 +153,32 @@ $('#btnCustSave').click(() => {
         let cDl = $('#custDl').val();
         let cContact = $('#custContact').val();
         let cPassword = $('#custPassword').val();
+        let cUserName = $('#custUserName').val();
 
         $.ajax({
-            method: "POST",
+            method: "PUT",
             url: customerBaseUrl,
             data: JSON.stringify({
-                "customerId": cId,
-                "customerName": cName,
-                "customerAddress": cAdd,
-                "customerEmail": cEmail,
-                "customerNIC": cNic,
-                "customerDrivingLIC": cDl,
-                "customerContact": cContact,
-                "customerPassword": cPassword
+                "customerID": cId,
+                "name": cName,
+                "address": cAdd,
+                "email": cEmail,
+                "nicNo": cNic,
+                "drivingLicenceNo": cDl,
+                "contact": cContact,
+                "password": cPassword,
+                "userName": cUserName
             }),
             dataType: 'Json',
             contentType: "application/json; charset=utf-8",
             success: function (res) {
-                if (res.message == 'Success') {
+                if (res.code == 200) {
+                    alert("Profile Successfully Updated");
+                    getLastLoginData();
                 }
             },
-            error: function (ob, textStatus, error) {
+            error: function (ob) {
+                alert(ob.responseJSON.message);
             }
         });
     }
@@ -353,49 +412,49 @@ function searchCustomerProfile() {
 }
 //End Search Customer Section
 //Start Customer Update
-$('#btnCustomerUpdate').click(() => {
-    updateCustomer();
-});
-function updateCustomer() {
-    if (checkValidationAdminCustomer()) {
-        let custId = $('#custId').val();
-        let custName = $('#custName').val();
-        let custAdd = $('#custAddress').val();
-        let custEmail = $('#custEmail').val();
-        let custNic = $('#custNic').val();
-        let custDl = $('#custDl').val();
-        let custContact = $('#custContact').val();
-        let custPassword = $('#custPassword').val();
-
-        $.ajax({
-            method: "put",
-            url: customerBaseUrl,
-            contentType: "application/json",
-            async: false,
-            data: JSON.stringify(
-                {
-                    customerID: custId,
-                    name: custName,
-                    contact: custContact,
-                    address: custAdd,
-                    email: custEmail,
-                    nicNo: custNic,
-                    drivingLicenceNo: custDl,
-                    password: custPassword,
-                    userName:custId
-                }
-            ),
-            success: function (data) {
-                alert("Successfully Updated");
-                return true;
-            },
-            error: function (ob) {
-                alert(ob.responseJSON.message);
-
-            }
-        });
-    }
-}
+// $('#btnCustomerUpdate').click(() => {
+//     updateCustomer();
+// });
+// function updateCustomer() {
+//     if (checkValidationAdminCustomer()) {
+//         let custId = $('#custId').val();
+//         let custName = $('#custName').val();
+//         let custAdd = $('#custAddress').val();
+//         let custEmail = $('#custEmail').val();
+//         let custNic = $('#custNic').val();
+//         let custDl = $('#custDl').val();
+//         let custContact = $('#custContact').val();
+//         let custPassword = $('#custPassword').val();
+//
+//         $.ajax({
+//             method: "put",
+//             url: customerBaseUrl,
+//             contentType: "application/json",
+//             async: false,
+//             data: JSON.stringify(
+//                 {
+//                     customerID: custId,
+//                     name: custName,
+//                     contact: custContact,
+//                     address: custAdd,
+//                     email: custEmail,
+//                     nicNo: custNic,
+//                     drivingLicenceNo: custDl,
+//                     password: custPassword,
+//                     userName:custId
+//                 }
+//             ),
+//             success: function (data) {
+//                 alert("Successfully Updated");
+//                 return true;
+//             },
+//             error: function (ob) {
+//                 alert(ob.responseJSON.message);
+//
+//             }
+//         });
+//     }
+// }
 //End Customer Update
 function searchCustomerCar() {
     let bookingId = $('#custBookingID').val();

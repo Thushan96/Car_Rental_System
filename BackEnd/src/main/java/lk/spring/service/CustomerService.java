@@ -15,4 +15,6 @@ public interface CustomerService {
     boolean findByUserNameAndPassword(String userName, String password);
 
     boolean findByUserName(String userName);
+
+    CustomerDTO getCustomer(String userName);
 }

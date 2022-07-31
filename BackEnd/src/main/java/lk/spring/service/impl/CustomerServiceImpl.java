@@ -83,6 +83,12 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public CustomerDTO getCustomer(String userName) {
+        Customer customer = customerRepo.getCustomerByUserName(userName);
+        return mapper.map(customer,CustomerDTO.class);
+    }
+
+    @Override
     public boolean findByUserNameAndPassword(String userName, String password) {
         Optional<Customer> byUserNameAndPassword = customerRepo.findByUserNameAndPassword(userName, password);
         return byUserNameAndPassword.isPresent();
