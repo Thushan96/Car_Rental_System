@@ -1,5 +1,6 @@
 const loginBaseurl="http://localhost:8080/api/v1/login";
 const customerBaseUrl="http://localhost:8080/api/v1/customer";
+const fileBaseUrl="http://localhost:8080/api/v1/fileUpload";
 let userId;
 
 
@@ -286,7 +287,6 @@ function checkFileChoose3() {
 $('#btncreate').click(function () {
         getLastCustID();
 
-    console.log("Create clicked");
 
         let id = $("#custId").val();
         let name = $("#inputName").val();
@@ -339,6 +339,7 @@ $('#btncreate').click(function () {
                                                                 uploadFiles();
                                                                 clearRegisterFeilds();
                                                                 alert('Account Created! Please Login!');
+                                                                location.replace("http://localhost:63342/Car_Rental_System/FrontEnd/common/logIn.html");
                                                             },
                                                             error: function (ob) {
                                                                 alert(ob.responseJSON.message);
@@ -360,7 +361,6 @@ $('#btncreate').click(function () {
                                         $('#inputUserName').css('border', '3px solid red');
                                     }
                                 } else {
-                                    console.log("save error");
                                     $('#inputNIC').css('border', '3px solid red');
                                 }
                             } else {
@@ -411,14 +411,18 @@ function uploadFiles() {
     data.append("license", fileObjectLicense, fileNameLicense); //append data
 
     $.ajax({
-        url: loginBaseurl+"/up",
+        url: fileBaseUrl,
         method: 'POST',
         async: true,
         processData: false, //stop processing data of request body
         contentType: false, // stop setting content type by jQuery
         data: data,
         success: function () {
-            alert("File Uploaded");
+            console.log("File Uploaded");
+        },
+        error: function (ob) {
+            alert(ob.responseJSON.message);
+
         }
     });
 

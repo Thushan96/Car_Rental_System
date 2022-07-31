@@ -1,34 +1,70 @@
-//Alpha X Software Company
-//Mindula Dilthushan
-// GMA v2.0.3
-// 21-06-25
-// Complete
+const loginBaseurl="http://localhost:8080/api/v1/login";
+
 $("#btn_Login").click(function () {
-        let userName = $('#txtUserName').val();
-        let password = $('#txtPassword').val();
+        let userName = $('#userName').val();
+        let password = $('#password').val();
 
-        if (userName != "") {
-            if (password !== "") {
-                if (userName == "admin" && password == "1023") {
-                    window.location = "http://localhost:63342/Gold-Medal-AutoMotive-v2.0.3/GMA-Frontend/src/common/admin.html";
+    if (checkInputField()) {
+
+        console.log(userName);
+        console.log(password);
+
+        $.ajax({
+            method: "GET",
+            url: loginBaseurl+'/' + userName + '/' + password,
+            async: false,
+            success: function (response) {
+                var role = response.data;
+                console.log(role);
+                if (role == "Admin") {
+                    loginSave("Admin");
+                    alert('Admin Login');
+                    location.replace("AdminDashBoard.html");
+                } else if (role == "Driver") {
+                    alert('Driver Login');
+                    location.replace("DriverDashBoard.html");
+                    loginSave("Driver");
+
+                } else if (role == "Customer") {
+                    alert('Customer Login');
+                    location.replace("CustomerDashBoard.html");
+                    loginSave("Customer");
+
                 } else {
-                    if (userName == "driver" && password == "1023") {
-                        window.location = "http://localhost:63342/Gold-Medal-AutoMotive-v2.0.3/GMA-Frontend/src/common/Driver.html";
-                    } else {
-                        if (userName == "customer" && password == "1023") {
-                            window.location = "http://localhost:63342/Gold-Medal-AutoMotive-v2.0.3/GMA-Frontend/src/common/customer.html";
-
-                        } else {
-                            alert("Invalid User Name and Password");
-                        }
-                    }
+                    alert("User not found! Try Again or Sign In");
                 }
-            } else {
-                alert("place Enter Password");
+            },
+            error: function (ob) {
+                alert(ob.responseJSON.message);
             }
-        } else {
-            alert("place Enter User Name");
-        }
+        });
+    } else {
+        // $('#driverID').css('border', '3px solid red');
+    }
 
     }
 );
+
+$('#userName').on('keyup', function (event) {
+    checkInputField();
+});
+
+$('#password').on('keyup', function (event) {
+    checkInputField();
+});
+
+function checkInputField() {
+    if ($('#userName').val() != "") {
+        $('#userName').css('border', '3px solid #0eab34');
+        if ($('#password').val() != "") {
+            $('#password').css('border', '3px solid #0eab34');
+            return true;
+        } else {
+            $('#password').css('border', '3px solid red');
+            return false;
+        }
+    } else {
+        $('#userName').css('border', '3px solid red');
+        return false;
+    }
+}

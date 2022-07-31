@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 
 @RestController
 @CrossOrigin
@@ -34,6 +35,9 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
+    private static final ArrayList<String> allImages = new ArrayList<>();
+
+
     @ResponseStatus(HttpStatus.CREATED)//201
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveLogin(@RequestBody LoginDTO login) {
@@ -42,49 +46,19 @@ public class LoginController {
     }
 
 
-
-
-    @PostMapping(path = "/up",consumes = MediaType.MULTIPART_FORM_DATA_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public boolean saveFile(@RequestPart("nic1") MultipartFile nicf, @RequestPart("nic2") MultipartFile nicb, @RequestPart("license") MultipartFile licenseFile) {
-
-        try {
-            // Let's get the project location
-            String projectPath = new File(this.getClass().getProtectionDomain().getCodeSource().getLocation().toURI()).getParentFile().getParentFile().getAbsolutePath();
-            // Let's create a folder there for uploading purposes, if not exists
-            File uploadsDir = new File(projectPath + "/lk/spring/Images");
-            uploadsDir.mkdir();
-            // It is time to transfer the file into the newly created dir
-            nicf.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + nicf.getOriginalFilename()));
-            nicb.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + nicb.getOriginalFilename()));
-            licenseFile.transferTo(new File(uploadsDir.getAbsolutePath() + "/" + licenseFile.getOriginalFilename()));
-
-            return true;
-
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-            return false;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
     @GetMapping(path = "/{userName}/{password}")
     public ResponseUtil searchUserNameAndPw(@PathVariable String userName, @PathVariable String password) {
 
         if (adminService.findByUserNameAndPassword(userName, password)) {
             return new ResponseUtil(200, "Done", "Admin");
-        } else {
-            if (driverService.findByUserNameAndPassword(userName, password)) {
-                return new ResponseUtil(200, "Done", "Driver");
-            } else {
-                if (customerService.findByUserNameAndPassword(userName, password)) {
-                    return new ResponseUtil(200, "Done", "Customer");
-                } else {
-                    return new ResponseUtil(200, "Done", "No");
-                }
-            }
+        } else if (driverService.findByUserNameAndPassword(userName, password)){
+            return new ResponseUtil(200, "Done", "Driver");
+        }else if (customerService.findByUserNameAndPassword(userName, password)){
+            return new ResponseUtil(200, "Done", "Customer");
+        }else {
+            return new ResponseUtil(200, "Done", "No");
         }
+
     }
 
         @GetMapping(path = "/{userName}")
