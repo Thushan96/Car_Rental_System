@@ -50,6 +50,7 @@
                                                                type="text"
                                                                placeholder="C001"
                                                                name="id"
+                                                               readonly="true"
                                                         >
                                                     </div>
                                                 </div>
@@ -197,7 +198,7 @@
                         <th scope="col">Fuel Type</th>
                     </tr>
                     </thead>
-                    <tbody id="tblCarBody">
+                    <tbody id="tblCustCar">
 
                     </tbody>
                 </table>
@@ -220,19 +221,17 @@
 
                 <div class="col-md-2">
                     <select class="form-select" aria-label="Default select example" id="driver">
-                        <option selected>Driver</option>
-                        <option value="1"> </option>
-                        <option value="2"> </option>
-                        <option value="3"> </option>
+                        <option selected selected value="-1">Driver</option>
+
                     </select>
                 </div>
 
                 <div class="col-md-2">
                     <select class="form-select" aria-label="Default select example" id="carType">
-                        <option selected>Car Type</option>
-                        <option value="1">General </option>
-                        <option value="2">Premium </option>
-                        <option value="3">Luxury </option>
+                        <option selected selected value="-1">Car Type</option>
+                        <option value="1">General</option>
+                        <option value="2">Premium</option>
+                        <option value="3">Luxury</option>
                     </select>
                 </div>
 
@@ -250,7 +249,10 @@
                 </div>
 
                 <div class="col-md-2">
-                    <input type="text" class="form-control" id="carid" placeholder="Car ID" >
+                    <select class="form-select" aria-label="Default select example" id="carId">
+                        <option selected value="-1" >Car Id</option>
+
+                    </select>
                 </div>
 
 
@@ -293,7 +295,7 @@
                         <th scope="col">Fuel Type</th>
                     </tr>
                     </thead>
-                    <tbody class="tblOrderBody">
+                    <tbody id="tblOrderBody">
                     </tbody >
                 </table>
             </section>

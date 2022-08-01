@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 @Service
 @Transactional
@@ -79,6 +80,43 @@ public class DriverServiceImpl implements DriverService {
         Optional<Driver> byUserName = driverRepo.findByUserName(userName);
         return byUserName.isPresent();
     }
+
+    @Override
+    public DriverDTO getDriver(String userName) {
+        Driver driver = driverRepo.getDriver(userName);
+        return mapper.map(driver, DriverDTO.class);
+    }
+
+    @Override
+    public DriverDTO searchRandomDriver(String id) {
+        if (driverRepo.existsById(id)) {
+            return mapper.map(driverRepo.findById(id).get(), DriverDTO.class);
+        }else{
+            return null;
+        }
+    }
+
+    @Override
+    public DriverDTO getRandomDriver() {
+
+        Random random = new Random();
+        int i = random.nextInt(10);
+        System.out.println(i + " Random i");
+
+        DriverDTO dto = searchRandomDriver("D" + i);
+        System.out.println("DTO " + dto);
+        while (true) {
+            if (dto == null || !dto.isAvailable()) {
+                i = random.nextInt(10);
+                dto = searchDriver("D" + i);
+                System.out.println("if in ");
+
+            }else {
+                return dto;}
+        }
+    }
+
+
 
     @Override
     public boolean findByUserNameAndPassword(String userName, String password) {

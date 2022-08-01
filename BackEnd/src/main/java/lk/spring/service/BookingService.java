@@ -12,4 +12,6 @@ public interface BookingService {
     BookingDTO searchBooking(String id);
     List<BookingDTO> getAllBooking();
     BookingDTO findLastBookingById();
+
+    List<BookingDTO> getBookinginId(String id);
 }

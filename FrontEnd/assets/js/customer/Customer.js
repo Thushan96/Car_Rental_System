@@ -1,5 +1,8 @@
 const loginBaseurl="http://localhost:8080/api/v1/login";
 const customerBaseUrl="http://localhost:8080/api/v1/customer";
+const carBaseUrl="http://localhost:8080/api/v1/car";
+const driverBaseUrl="http://localhost:8080/api/v1/driver";
+
 
 getLastLoginData();
 
@@ -190,10 +193,12 @@ $('#btnCarsRefresh').click(function () {
     loadAllCars();
 });
 
+loadAllCars();
+
 function loadAllCars() {
-    $('#tblCarBody').empty();
+    $('#tblCustCar').empty();
     $.ajax({
-        url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/car',
+        url: carBaseUrl,
         method: 'GET',
         async: false,
         dataType: 'json',
@@ -208,16 +213,8 @@ function loadAllCars() {
                 let adminCarColor = values[i].carColour;
                 let adminCarFuel = values[i].carFuelType;
 
-                $('#tblCarBody').append(`<tr>
-                                            <td>${adminCarId}</td>
-                                            <td>${adminCarBrand}</td>
-                                            <td>${adminCarPass}</td>
-                                            <td>${adminCarTran}</td>
-                                            <td>${adminCarType}</td>
-                                            <td>${adminCarColor}</td>
-                                            <td>${adminCarFuel}</td>
-                                       
-                                            </tr>`)
+                $('#tblCustCar').append(`<tr><td>${adminCarId}</td><td>${adminCarBrand}</td><td>${adminCarPass}</td><td>${adminCarTran}</td><td>${adminCarType}</td><td>${adminCarColor}</td><td>${adminCarFuel}</td></tr>`)
+                $('#tblOrderBody').append(`<tr><td>${adminCarId}</td><td>${adminCarBrand}</td><td>${adminCarPass}</td><td>${adminCarTran}</td><td>${adminCarType}</td><td>${adminCarColor}</td><td>${adminCarFuel}</td></tr>`)
             }
         }
     });
@@ -312,6 +309,86 @@ function clearOrderPage(){
     $('#carid').val("");
 
 }
+
+////////////////customer place order------------
+function getSelectedCType() {
+    let type = ($('#carType option:selected').text());
+    console.log(type);
+    if (type != "- Car Type -") {
+        $('#type').css('border', '3px solid green').focus();
+        return type;
+
+    } else {
+        $('#type').css('border', '3px solid red').focus();
+        return null;
+
+    }
+}
+
+
+$('#carType').click(function () {
+
+    let type = getSelectedCType();
+    if (type != null ) {
+        getCarList(type);
+
+    } else {
+        $('#carType').css('border', '3px solid red').focus();
+    }
+});
+
+function getCarList(type) {
+    $.ajax({
+        method: "GET",
+        url: carBaseUrl+'/get/' + type ,
+        async: false,
+        success: function (response) {
+            let data = response.data;
+            loadAllCarID(data);
+
+        }
+    });
+}
+
+//load all car id in type
+function loadAllCarID(data) {
+    $('#carId').empty();
+    $('#carId').append(`<option value=0 id="option">- Car ID -</option>`);
+
+    for (let i in data) {
+        let id = data[i].carId;
+
+        console.log(id);
+        var option = `<option value=${i} id="option">${id}</option>`;
+        $('#carId').append(option);
+    }
+}
+
+
+
+function setRandomDriver(){
+    $.ajax({
+        method: "GET",
+        url: driverBaseUrl+'/get/list/randomDriver',
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            var option = `<option value=${response.data.driverID} id="option">${response.data.name}</option>`;
+            $('#driver').append(option);
+
+        },
+        error: function (ob) {
+            alert(ob.responseJSON.message);
+
+        }
+    });
+}
+
+$('#driver').click(function () {
+        setRandomDriver();
+});
+
+
 
 
 

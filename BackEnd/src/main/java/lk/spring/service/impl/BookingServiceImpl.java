@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -66,5 +67,12 @@ public class BookingServiceImpl implements BookingService {
         }else{
             return mapper.map(bookingRepo.findTopByOrderByBookingIDDesc(), BookingDTO.class);
         }
+    }
+
+    @Override
+    public List<BookingDTO> getBookinginId(String driverId) {
+        List<Booking> bookings = bookingRepo.getAcceptedBookings("Accept", driverId);
+        return mapper.map(bookings,new TypeToken<ArrayList<BookingDTO>>(){}.getType());
+
     }
 }

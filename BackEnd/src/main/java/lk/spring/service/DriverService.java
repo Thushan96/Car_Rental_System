@@ -11,6 +11,7 @@ public interface DriverService {
     void updateDriver(DriverDTO dto);
     void deleteDriver(String id);
     DriverDTO searchDriver(String id);
+    DriverDTO searchRandomDriver(String id);
     List<DriverDTO> getAllDrivers();
     DriverDTO findLastDriverById();
 
@@ -18,4 +19,9 @@ public interface DriverService {
     boolean findByUserNameAndPassword(String userName, String password);
 
     boolean findByUserName(String userName);
+
+    DriverDTO getDriver(String userName);
+
+    DriverDTO getRandomDriver();
+
 }

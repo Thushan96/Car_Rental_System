@@ -9,19 +9,30 @@ function checkValidationAdminDriver() {
     let adminDriverNic = $('#adDriverNIC').val();
     let adminDriverContact = $('#adDriverContact').val();
     let adminDriverPassword = $('#adDriverPassword').val();
+    let adminDriverUsername = $('#adDriverUsername').val();
+
 
     if (adminDriverId != "") {
         if (adminDriverName != "") {
             if (adminDriverNic != "") {
                 if (adminDriverContact != "") {
-                    if (adminDriverPassword) {
-                        return true;
-                    } else {
-                        $('#adDriverEmail').css({
+                    if (adminDriverUsername!="") {
+                        if (adminDriverPassword) {
+                            return true;
+                        } else {
+                            $('#adDriverEmail').css({
+                                'border': '2px #FF0000FF solid'
+                            });
+                            $('#adDriverEmail').focus();
+                            alert("Please Enter Password");
+                            return false;
+                        }
+                    }else {
+                        $('#adDriverUsername').css({
                             'border': '2px #FF0000FF solid'
                         });
-                        $('#adDriverEmail').focus();
-                        alert("Please Enter Password");
+                        $('#adDriverUsername').focus();
+                        alert("Please Enter Username");
                         return false;
                     }
                 } else {
@@ -77,6 +88,7 @@ $('#btnAdminDriverSave').click(() => {
         let adminDriverNic = $('#adDriverNIC').val();
         let adminDriverContact = $('#adDriverContact').val();
         let adminDriverPassword = $('#adDriverPassword').val();
+        let adminDriverUsername = $('#adDriverUsername').val();
 
         $.ajax({
             method: "POST",
@@ -86,7 +98,7 @@ $('#btnAdminDriverSave').click(() => {
                 "name": adminDriverName,
                 "contactNo": adminDriverContact,
                 "nic": adminDriverNic,
-                "userName":adminDriverId,
+                "userName":adminDriverUsername,
                 "password":adminDriverPassword
             }),
             dataType: 'Json',

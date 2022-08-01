@@ -13,4 +13,5 @@ public interface CarService {
     CarDTO searchCar(String id);
     List<CarDTO> getAllCars();
 
+    List<CarDTO> readByType(String type);
 }

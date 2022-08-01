@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -62,6 +63,13 @@ public class CarServiceImpl implements CarService {
     @Override
     public List<CarDTO> getAllCars() {
         return mapper.map(carRepo.findAll(), new TypeToken<List<CarDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public List<CarDTO> readByType(String type) {
+        List<Car> all = carRepo.readByCarType(type);
+        return mapper.map(all, new TypeToken<ArrayList<CarDTO>>() {
         }.getType());
     }
 }

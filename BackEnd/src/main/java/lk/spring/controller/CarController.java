@@ -7,7 +7,10 @@ import lk.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -38,6 +41,12 @@ public class CarController {
     @GetMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCar(@PathVariable String id){
         return new ResponseUtil(200,"Ok",carService.searchCar(id));
+    }
+
+    @GetMapping(path = "/get/{type}")
+    public ResponseUtil getCarsByType(@PathVariable String type) {
+        List<CarDTO> allCars = carService.readByType(type);
+        return new ResponseUtil(200, "Done", allCars);
     }
 
     @DeleteMapping(path = "/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
