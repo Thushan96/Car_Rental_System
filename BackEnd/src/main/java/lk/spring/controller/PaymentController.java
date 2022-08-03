@@ -6,7 +6,10 @@ import lk.spring.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @CrossOrigin
@@ -43,5 +46,11 @@ public class PaymentController {
     public ResponseUtil deletePayments(@PathVariable String id){
         paymentService.deletePayment(id);
         return new ResponseUtil(200,"Deleted",null);
+    }
+
+    @GetMapping(path = "/get/{id}")
+    public ResponseUtil getAllPaymentByCustomer(@PathVariable String id){
+        List<PaymentDTO> allPayments = paymentService.getPaymentCid(id);
+        return new ResponseUtil(200,"Done",allPayments);
     }
 }

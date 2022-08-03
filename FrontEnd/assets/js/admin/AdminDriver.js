@@ -73,7 +73,7 @@ function checkValidationAdminDriver() {
 
 function clearDriverFields() {
     $('#adDriverId').val("");
-    $('#adDriverName').val("");
+    $('#adDriverUsername').val("");
     $('#adDriverNIC').val("");
     $('#adDriverContact').val("");
     $('#adDriverPassword').val("");

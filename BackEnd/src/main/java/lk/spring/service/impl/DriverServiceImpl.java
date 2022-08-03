@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 
@@ -89,11 +90,12 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public DriverDTO searchRandomDriver(String id) {
-        if (driverRepo.existsById(id)) {
-            return mapper.map(driverRepo.findById(id).get(), DriverDTO.class);
-        }else{
-            return null;
+        Optional<Driver> driver = driverRepo.findById(id);
+        if (driver.isPresent()) {
+            return mapper.map(driver, DriverDTO.class);
         }
+            return null;
+
     }
 
     @Override
@@ -102,13 +104,14 @@ public class DriverServiceImpl implements DriverService {
         Random random = new Random();
         int i = random.nextInt(10);
         System.out.println(i + " Random i");
-
+//        System.out.println( driverDTOS.get(i)+" Random dri");
+//        return driverDTOS.get(i);
         DriverDTO dto = searchRandomDriver("D" + i);
         System.out.println("DTO " + dto);
         while (true) {
-            if (dto == null || !dto.isAvailable()) {
+            if (dto == null || dto.isAvailable() == true) {
                 i = random.nextInt(10);
-                dto = searchDriver("D" + i);
+                dto = searchRandomDriver("D" + i);
                 System.out.println("if in ");
 
             }else {

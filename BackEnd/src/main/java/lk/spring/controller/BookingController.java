@@ -47,7 +47,7 @@ public class BookingController{
         return new ResponseUtil(200,"Deleted",null);
     }
 
-    @GetMapping(params = {"bookingId"},produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path= "/bookingId",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getLastBooking(){
         BookingDTO lastBookingById = bookingService.findLastBookingById();
         String id=null;
@@ -75,4 +75,18 @@ public class BookingController{
         List<BookingDTO> bookings = bookingService.getBookinginId(id);
         return new ResponseUtil(200, "Done", bookings);
     }
+
+    @GetMapping(path = "/get/adminResp/{id}")
+    public ResponseUtil getAllBookingsMultiStatus(@PathVariable String id) {
+        List<BookingDTO> allBookings = bookingService.getBookingMultiStatus(id);
+        return new ResponseUtil(200, "Done", allBookings);
+    }
+
+    @GetMapping(path = "/get/{status}")
+    public ResponseUtil getAllBookingsinstatus(@PathVariable String status) {
+        List<BookingDTO> allBookings = bookingService.readByStatus(status);
+        return new ResponseUtil(200, "Done", allBookings);
+    }
+
+
 }

@@ -14,4 +14,9 @@ public interface BookingRepo extends JpaRepository<Booking,String> {
 
     @Query(value = "SELECT b from Booking b where b.status=:state AND b.driver.driverID=:driverId")
     List<Booking> getAcceptedBookings(@Param("state") String state, @Param("driverId") String driverId);
+
+    @Query(value = "SELECT b from Booking b where b.status=:state1 OR b.status=:state2 AND b.customer.customerID=:custId")
+    List<Booking> getBookingByStatusAndCustomer(@Param("state1") String state1, @Param("state2") String state2, @Param("custId") String custId);
+
+    List<Booking> readByStatus(String status);
 }

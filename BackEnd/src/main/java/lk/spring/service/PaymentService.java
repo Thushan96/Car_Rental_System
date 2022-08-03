@@ -10,4 +10,6 @@ public interface PaymentService {
     void updatePayment(PaymentDTO dto);
     PaymentDTO searchPayment(String id);
     List<PaymentDTO> getAllPayments();
+
+    List<PaymentDTO> getPaymentCid(String custId);
 }

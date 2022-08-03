@@ -2,6 +2,8 @@ const loginBaseurl="http://localhost:8080/api/v1/login";
 const customerBaseUrl="http://localhost:8080/api/v1/customer";
 const carBaseUrl="http://localhost:8080/api/v1/car";
 const driverBaseUrl="http://localhost:8080/api/v1/driver";
+const bookingBaseurl="http://localhost:8080/api/v1/booking";
+const paymentBaseurl="http://localhost:8080/api/v1/payment";
 
 
 getLastLoginData();
@@ -373,223 +375,538 @@ function setRandomDriver(){
         async: false,
         dataType: 'json',
         success: function (response) {
+            let driver=response.data;
+            console.log(driver);
             var option = `<option value=${response.data.driverID} id="option">${response.data.name}</option>`;
             $('#driver').append(option);
 
         },
-        error: function (ob) {
-            alert(ob.responseJSON.message);
-
-        }
     });
 }
 
-$('#driver').click(function () {
-        setRandomDriver();
-});
 
+setRandomDriver();
+setBookingId();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$('#btnCustProfile').click(function () {
-    $('#custProfilePage').css({
-        'display': 'block'
-    });
-    $('#customer_Car_Page').css({
-        'display': 'none'
-    });
-    $('#custOrderPage').css({
-        'display': 'none'
-    });
-    $('#customer_Pay_Page').css({
-        'display': 'none'
-    });
-});
-$('#btnCustCars').click(function () {
-    $('#custProfilePage').css({
-        'display': 'none'
-    });
-    $('#customer_Car_Page').css({
-        'display': 'block'
-    });
-    $('#custOrderPage').css({
-        'display': 'none'
-    });
-    $('#customer_Pay_Page').css({
-        'display': 'none'
-    });
-});
-$('#btnCustOrders').click(function () {
-    $('#custProfilePage').css({
-        'display': 'none'
-    });
-    $('#customer_Car_Page').css({
-        'display': 'none'
-    });
-    $('#custOrderPage').css({
-        'display': 'block'
-    });
-    $('#customer_Pay_Page').css({
-        'display': 'none'
-    });
-    getBookingID();
-});
-$('#btnCustPay').click(function () {
-    $('#custProfilePage').css({
-        'display': 'none'
-    });
-    $('#customer_Car_Page').css({
-        'display': 'none'
-    });
-    $('#custOrderPage').css({
-        'display': 'none'
-    });
-    $('#customer_Pay_Page').css({
-        'display': 'block'
-    });
-});
-//Start Search Customer Section
-function searchCustomerProfile() {
-    // $("#tblCustomerBody").empty();
-    let id = $("#custId").val();
-    if (id != "") {
-        $.ajax({
-            method: "get",
-            url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/customer/' + id,
-            async: true,
-            dataType: 'json',
-            success: function (response) {
-                var data = response.data;
-
-                $('#custId').val(data.customerId);
-                $('#custName').val(data.customerName);
-                $('#custAddress').val(data.customerAddress);
-                $('#custEmail').val(data.customerEmail);
-                $('#custNic').val(data.customerNIC);
-                $('#custDl').val(data.customerDrivingLIC);
-                $('#custContact').val(data.customerContact);
-                $('#custPassword').val(data.customerPassword);
-            }
-        });
-    } else {
-    }
-}
-//End Search Customer Section
-//Start Customer Update
-// $('#btnCustomerUpdate').click(() => {
-//     updateCustomer();
-// });
-// function updateCustomer() {
-//     if (checkValidationAdminCustomer()) {
-//         let custId = $('#custId').val();
-//         let custName = $('#custName').val();
-//         let custAdd = $('#custAddress').val();
-//         let custEmail = $('#custEmail').val();
-//         let custNic = $('#custNic').val();
-//         let custDl = $('#custDl').val();
-//         let custContact = $('#custContact').val();
-//         let custPassword = $('#custPassword').val();
-//
-//         $.ajax({
-//             method: "put",
-//             url: customerBaseUrl,
-//             contentType: "application/json",
-//             async: false,
-//             data: JSON.stringify(
-//                 {
-//                     customerID: custId,
-//                     name: custName,
-//                     contact: custContact,
-//                     address: custAdd,
-//                     email: custEmail,
-//                     nicNo: custNic,
-//                     drivingLicenceNo: custDl,
-//                     password: custPassword,
-//                     userName:custId
-//                 }
-//             ),
-//             success: function (data) {
-//                 alert("Successfully Updated");
-//                 return true;
-//             },
-//             error: function (ob) {
-//                 alert(ob.responseJSON.message);
-//
-//             }
-//         });
-//     }
-// }
-//End Customer Update
-function searchCustomerCar() {
-    let bookingId = $('#custBookingID').val();
-    let id = $("#carid").val();
-    if (id != "") {
-        $.ajax({
-            method: "GET",
-            url: carBaseUrl+ "/" + id,
-            async: true,
-            dataType: 'json',
-            success: function (response) {
-                var data = response.data;
-
-                $('#carid').val(data.carId);
-                $('#carType').val(data.carType);
-                $('#carPrice').val(data.car)
-                $('#tblOrderBody').append(`<tr>
-                                      
-                                  <td>${bookingId}</td>
-                                  <td>${data.carBrand}</td>
-                                  <td>${data.carNmbOfPassengers}</td>
-                                  <td>${data.carTransmissionType}</td>
-                                  <td>${data.carType}</td>
-                                  <td>${data.carColour}</td>
-                                  <td>${data.carFuelType}</td>
-                               
-                                     </tr>`)
-
-                let getPickDate = $('#pickUpDate').val();
-                let getReturn = $('#returnDate').val();
-
-
-                let tot = $('carPrice').val();
-                let time = getReturn - getPickDate;
-                let price = tot * time;
-                console.log(price);
-            }
-        });
-    } else {
-    }
-}
-// function total(){
-//
-// }
-
-
-function getBookingID() {
+function setBookingId(){
     $.ajax({
-        method: "get",
-        url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/booking/getBookingLastID',
+        method: "GET",
+        url: bookingBaseurl+'/bookingId',
         async: false,
+        dataType: 'json',
         success: function (response) {
-            var data = response.data;
-            console.log("data" + data);
-            $('#custBookingID').val(data)
-            console.log($('#custBookingID').val());
-        }
-
+            $('#custBookingID').val(response.data);
+        },
     });
 }
+
+let today;
+
+getCurrentDate();
+
+function getCurrentDate() {
+
+    today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth() + 1; //As January is 0.
+    var yyyy = today.getFullYear();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '0' + mm;
+    return (mm + '/' + dd + '/' + yyyy);
+}
+
+
+
+
+
+//check pickup date
+function checkingPickupDate() {
+    let val = $('#pickupDate').val();
+    if (val != "" && new Date(today) <= new Date(val)) {
+        $('#pickupDate').css('border', '3px solid green').focus();
+        return val;
+    } else {
+        $('#pickupDate').css('border', '3px solid red').focus();
+        return null;
+    }
+
+}
+
+
+//check pickup date
+function checkingReturnDate() {
+    let pick = $('#pickupDate').val();
+    let rtn = $('#returnDate').val();
+    if (rtn != "" && new Date(today) <= new Date(rtn) && new Date(pick) <= new Date(rtn)) {
+        $('#returnDate').css('border', '3px solid green').focus();
+        return rtn;
+    } else {
+        $('#returnDate').css('border', '3px solid red').focus();
+        return null;
+    }
+
+}
+
+function checkSelectedCarId() {
+    let cid = ($('#carId option:selected').text());
+    if (cid != "Car Id") {
+        $('#carId').css('border', '3px solid green').focus();
+        return cid;
+    } else {
+        $('#carId').css('border', '3px solid red').focus();
+        return null;
+
+    }
+}
+
+function checkSelectedDriverId() {
+    let Did = ($('#driver option:selected').val());
+    if (Did != -1) {
+        $('#driver').css('border', '3px solid green').focus();
+        return Did;
+    } else {
+        $('#driver').css('border', '3px solid red').focus();
+        return null;
+
+    }
+}
+
+
+$('#pickupDate').on('change', function () {
+    checkingPickupDate();
+});
+
+$('#returnDate').on('change', function () {
+    checkingReturnDate();
+});
+
+$('#driver').on('change', function () {
+    checkSelectedDriverId();
+});
+
+$('#carId').on('change', function () {
+    checkSelectedCarId();
+});
+
+
+$('#btnBooking').click(function () {
+    let custID = $('#custId').val();
+    let bookingID = $('#custBookingID').val();
+
+    let pickupDate = checkingPickupDate();
+    let returnDate = checkingReturnDate();
+    let cType = getSelectedCType();
+    let carId = checkSelectedCarId();
+    let driverId = checkSelectedDriverId();
+
+    console.log(custID ,bookingID,pickupDate,returnDate,cType,carId,driverId,today);
+
+    let car;
+    let driver = null;
+    let customer;
+
+    if (cType != null) {
+        if (carId != null) {
+            if (pickupDate != null) {
+                if (returnDate != null) {
+
+
+                    $.ajax({
+                        method: "GET",
+                        url: carBaseUrl + "/" +carId,
+                        async: false,
+                        dataType: 'json',
+                        success: function (response) {
+                            car = response.data;
+                        }
+                    });
+                    $.ajax({
+                        method: "GET",
+                        url: customerBaseUrl +"/" +custID,
+                        async: false,
+                        dataType: 'json',
+                        success: function (response) {
+                            customer = response.data;
+                        }
+                    });
+
+                    if (driverId!=-1) {
+                        console.log(driverId);
+                        $.ajax({
+                            method: "GET",
+                            url: driverBaseUrl+ "/" +driverId,
+                            async: false,
+                            dataType: 'json',
+                            success: function (response) {
+                                driver = response.data;
+                            }
+                        });
+                    }else {
+                        driver=null;
+                    }
+
+                    console.log("bookingId"+bookingID+ "driver " + driver + " car " + car + " cust " + customer);
+                    $.ajax({
+                        method: "POST",
+                        url: bookingBaseurl,
+                        contentType: "application/json",
+                        async: false,
+                        data: JSON.stringify(
+                            {
+                                bookingID: bookingID,
+                                date: today,
+                                pickupDate: pickupDate,
+                                returnDate: returnDate,
+                                status: "pending",
+                                customer: customer,
+                                car: car,
+                                driver: driver
+                            }
+                        ),
+                        success: function (response) {
+                            let data = response.data;
+                            // let bid = $('#cbookingID').val(data.bookingID);
+                            console.log(data);
+                            // getBookingUpdateResp(bid);
+                            // loadAllCRBooking();
+                            // loadOrdersByCustomer();
+
+
+                            alert("Car booking request Successful");
+                        },
+                        error: function (ob) {
+                            alert(ob.responseJSON.message);
+
+                        }
+                    });
+
+
+                } else {
+                    $('#returnDate').css('border', '3px solid red').focus();
+                }
+            } else {
+                $('#pickupDate').css('border', '3px solid red').focus();
+            }
+        } else {
+            $('#carId').css('border', '3px solid red').focus();
+
+        }
+    } else {
+        $('#carType').css('border', '3px solid red').focus();
+
+    }
+});
+
+loadPaymentDetails($('#custId').val());
+
+function loadPaymentDetails(id){
+    $.ajax({
+        method: "GET",
+        url: paymentBaseurl+ "/get/" +id,
+        async: false,
+        dataType: 'json',
+        success: function (res) {
+            let values = res.data;
+            console.log(values);
+            for (i in values) {
+                let paymentID = values[i].paymentID;
+                let date = values[i].date;
+                let bookingID = values[i].bookingID;
+                let amount = values[i].amount;
+
+
+                $('#tblPayBody').append(`<tr><td>${paymentID}</td><td>${date}</td><td>${bookingID}</td><td>${amount}</td></tr>`)
+            }
+        }
+    });
+}
+
+
+/////////////Booking Status------------
+loadAllCRBooking();
+function loadAllCRBooking() {
+
+    let custId = $('#custId').val();
+    console.log(custId);
+
+    $('#cbookingTBody').empty();
+
+    $.ajax({
+        method: 'GET',
+        url: bookingBaseurl+"/get/adminResp/"  + custId,
+        dataType: 'json',
+        async: false,
+        success: function (resp) {
+            let response = resp.data;
+            console.log(response);
+            for (var i in response) {
+                let bookingID = (response[i].bookingID);
+                let orddate = (response[i].date);
+                let customerID = response[i].customer.customerID;
+                let carID = response[i].car.carId;
+                let pickupDate = response[i].pickupDate;
+                let returnDate = response[i].returnDate
+                let driverID = response[i].driver.driverID;
+                let d = driverID;
+                let status = response[i].status;
+                if (driverID == null) {
+                    d = "No Need Driver";
+                }
+
+                var row = `<tr><td>${bookingID}</td><td>${orddate}</td><td>${customerID}</td><td>${carID}</td><td>${pickupDate}</td><td>${returnDate}</td><td>${d}</td><td>${status}</td></tr>`;
+                $('#cbookingTBody').append(row);
+
+                $('#cbookingTBody tr').css({"cursor": "pointer"});
+                $('#cbookingTBody tr').click(function () {
+
+                    let bookingId = $(this).children('td:eq(0)').text();
+                    let ord = $(this).children('td:eq(1)').text();
+                    let custid = $(this).children('td:eq(2)').text();
+                    let carid = $(this).children('td:eq(3)').text();
+                    let pickup = $(this).children('td:eq(4)').text();
+                    let rtndate = $(this).children('td:eq(5)').text();
+                    let drvid = $(this).children('td:eq(6)').text();
+                    let status = $(this).children('td:eq(7)').text();
+
+                    $('#cbookingID').val(bookingId);
+                    $('#hiddnCar').val(carid);
+                    $('#hiddnCust').val(custid);
+                    $('#hiddnDriver').val(drvid);
+                    $('#hiddnord').val(ord);
+                    $('#hiddnpick').val(pickup);
+                    $('#hiddnReturn').val(rtndate);
+
+
+                    if (status == "Accept") {
+                        $("#btnRent").attr("disabled", false);
+                        // setLoosDmg();
+                        // if (drvid == "") {
+                        //     // $('#msg').click(function () {
+                        //     //     let dname;
+                        //     //     let dcontact;
+                        //     //     $("#btnRent").attr("disabled", true);
+                        //     //     $.ajax({
+                        //     //         method: "get",
+                        //     //         url: 'http://localhost:8080/Rent4u_BackEnd_war_exploded/api/v1/driver/' + did,
+                        //     //         async: false,
+                        //     //         dataType: 'json',
+                        //     //         success: function (response) {
+                        //     //             var data = response.data;
+                        //     //             dname = data.name;
+                        //     //             dcontact = data.contactNo;
+                        //     //             let text = ("------------Your Reqeust Accepted!------------\n * Your Driver Name - " + dname + "\n* Driver Contact - " + dcontact + "Please Deposite paymnet for.........>Acc no : 152-3-999-3-025466 , Bank- People's Bank-Matara , Acc: Holder : A.G. Pethum Nuwanga");
+                        //     //             if ($('.popover').hasClass('in')) {
+                        //     //                 $('#msg').popover('hide');
+                        //     //             } else {
+                        //     //                 $('#msg').attr('data-mdb-content', text);
+                        //     //                 $('#msg').popover('show');
+                        //     //             }
+                        //     //         }
+                        //     //     });
+                        //     //
+                        //     // });
+                        // } else {
+                        //     // let text = ("...............Your Reqeust Accepted!.................\n Please Deposite paymnet for.........>Acc no : 152-3-999-3-025466 , Bank- People's Bank-Matara , Acc: Holder : A.G. Pethum Nuwanga. Enjoy tour!");
+                        //     // $('#msg').click(function () {
+                        //     //
+                        //     //     if ($('.popover').hasClass('in')) {
+                        //     //         $('#msg').popover('hide');
+                        //     //     } else {
+                        //     //         $('#msg').attr('data-mdb-content', text);
+                        //     //         $('#msg').popover('show');
+                        //     //     }
+                        //     // });
+                        // }
+                    } else if (status == "Reject") {
+                        // $("#btnRent").attr("disabled", true);
+                        //
+                        // let text = ("................Request Denied !..................\nThank you for your order.\n Please try again for booking .");
+                        // $('#msg').click(function () {
+                        //
+                        //     if ($('.popover').hasClass('in')) {
+                        //         $('#msg').popover('hide');
+                        //     } else {
+                        //         $('#msg').attr('data-mdb-content', text);
+                        //         $('#msg').popover('show');
+                        //     }
+                        // });
+
+                    } else {
+                    }
+
+                });
+
+
+            }
+        }
+    });
+}
+
+//Delete Order------
+$('#btnDeleteOrder').click(function () {
+
+
+    let bookingId = $('#cbookingID').val();
+    let carid = $('#hiddnCar').val();
+    let cid = $('#hiddnCust').val();
+    let driverId = $('#hiddnDriver').val();
+    let ordDate = $('#hiddnord').val();
+    let pickupdate = $('#hiddnpick').val();
+    let returnDate = $('#hiddnReturn').val();
+
+    console.log(bookingId,carid,cid,driverId,ordDate,pickupdate,returnDate);
+
+    let car;
+    let driver;
+    let customer;
+
+            $.ajax({
+                method: "GET",
+                url: carBaseUrl +"/"+ carid,
+                async: false,
+                dataType: 'json',
+                success: function (response) {
+                    car = response.data;
+                    console.log("car " + car);
+                    updateCarinAjax(car);
+                }
+            });
+            $.ajax({
+                method: "GET",
+                url: customerBaseUrl +"/"+ cid,
+                async: false,
+                dataType: 'json',
+                success: function (response) {
+                    customer = response.data;
+                    console.log("cust " + customer);
+
+                }
+            });
+
+            if (driverId == "") {
+                $.ajax({
+                    method: "GET",
+                    url: driverBaseUrl +"/"+ driverId,
+                    async: false,
+                    dataType: 'json',
+                    success: function (response) {
+                        driver = response.data;
+                        console.log("driver " + driver);
+
+                        updateDriAjax(driver);
+                    }
+                });
+
+            } else {
+                $.ajax({
+                    method: "GET",
+                    url: driverBaseUrl +"/"+ driverId,
+                    async: false,
+                    dataType: 'json',
+                    success: function (response) {
+                        driver = response.data;
+
+                    }
+                });
+            }
+
+            $.ajax({
+                method: "PUT",
+                url: bookingBaseurl,
+                contentType: "application/json",
+                async: false,
+                data: JSON.stringify(
+                    {
+                        bookingID: bookingId,
+                        date: ordDate,
+                        pickupDate: pickupdate,
+                        returnDate: returnDate,
+                        status: "Cancel",
+                        customer: customer,
+                        car: car,
+                        driver: driver
+                    }
+                ),
+                success: function (data) {
+                    loadAllCRBooking();
+                    // Swal.fire({
+                    //     position: 'top-end',
+                    //     icon: 'success',
+                    //     title: 'Upadeted !',
+                    //     showConfirmButton: false,
+                    //     timer: 1500
+                    // })
+
+                    alert("Booking Canceled");
+                }
+            });
+
+
+    });
+
+
+function updateCarinAjax(car) {
+    $.ajax({
+        method: "PUT",
+        url: carBaseUrl,
+        contentType: "application/json",
+        async: false,
+        data: JSON.stringify(
+            {
+                carId: car.carId,
+                carBrand: car.carBrand,
+                carType: car.carType,
+                carFreeMillageDuration:car.carFreeMillageDuration,
+                carFreeMillagePrice:car.carFreeMillagePrice,
+                carNmbOfPassengers: car.carNmbOfPassengers,
+                transmissionType: car.transmissionType,
+                carFuelType: car.carFuelType,
+                carColour: car.carColour,
+                carDailyRate: car.carDailyRate,
+                carMonthlyRate: car.carMonthlyRate,
+                freeKmforMonth: car.freeKmforMonth,
+                freeKmforDay: car.freeKmforDay,
+                carLossDamageWaiver: car.lossDamageWaiver,
+                carPriceForExtraKM: car.priceForExtraKM,
+                carRegistrationNumber:car.carRegistrationNumber
+            }
+        ),
+        success: function (data) {
+        }
+    });
+
+}
+
+
+function updateDriAjax(driver) {
+    $.ajax({
+        method: "PUT",
+        url: driverBaseUrl,
+        contentType: "application/json",
+        async: true,
+        data: JSON.stringify(
+            {
+                driverID: driver.driverID,
+                name: driver.name,
+                contactNo: driver.contactNo,
+                nic: driver.nic,
+                userName: driver.userName,
+                password: driver.password,
+                available: true
+            }
+        ),
+        success: function (data) {
+            return true;
+        }
+    });
+}
+
+
+
+
+
+
+
+
 

@@ -20,6 +20,7 @@
         <li class="nav-item"><a class="nav-link " aria-current="page" href="#customerProfile">My Profile</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" href="#customer_Car">Cars</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" href="#bookingRequest">Orders</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="#bookingResponse">Booking Response</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" href="#payment">Payment</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" href="../index.html">Log Out</a></li>
     </ul>
@@ -216,7 +217,7 @@
             <form class="row g-3">
 
                 <div class="col-md-2">
-                    <input type="text" class="form-control" id="custBookingID" placeholder="B###" >
+                    <input type="text" class="form-control" id="custBookingID" readonly="true" placeholder="B###" >
                 </div>
 
                 <div class="col-md-2">
@@ -300,11 +301,58 @@
                 </table>
             </section>
 
-            <button type="button" class="btn btn-info" id="btnPlaceOrder" >Place Order</button>
+            <button type="button" class="btn btn-info" id="btnBooking" >Place Order</button>
 
         </div>
 
     </section>
+
+
+
+    <!--    Booking Response-->
+    <section id="bookingResponse">
+        <div id="cover5">
+
+            <div id="bookingSearch" class="col-md-2" >
+                <input class="form-control me-2" type="search" id="cbookingID" placeholder="Search" aria-label="Search">
+            </div>
+
+            <input type="text" class="form-control  rounded-7" id="hiddnCar" hidden>
+            <input type="text" class="form-control  rounded-7" id="hiddnCust" hidden>
+            <input type="text" class="form-control  rounded-7" id="hiddnDriver" hidden>
+            <input type="text" class="form-control  rounded-7" id="hiddnord" hidden>
+            <input type="text" class="form-control  rounded-7" id="hiddnpick" hidden>
+            <input type="text" class="form-control  rounded-7" id="hiddnReturn" hidden>
+
+
+            <section id="bookingResponseTable"  class="mt-5">
+                <table class="table table table-primary table table-bordered">
+                    <thead id="cbookingTHeader">
+                    <tr>
+                        <th>Booking ID</th>
+                        <th>Order Date</th>
+                        <th>Customer ID</th>
+                        <th>Car ID</th>
+                        <th>Pickup Date</th>
+                        <th>Return Date</th>
+                        <th>Driver ID</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody id="cbookingTBody">
+                    </tbody>
+                </table>
+            </section>
+
+
+            <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <button type="button" class="btn btn-success mt-3 " id="btnRent" style="font-size:15px" disabled>Make Payment</button>
+                <button type="button" class="btn btn-danger mt-3 " id="btnDeleteOrder" style="font-size:15px">Delete Order</button>
+            </div>
+        </div>
+
+    </section>
+
 
 
     <!--    payment Section?-->
@@ -317,13 +365,13 @@
                 <table class="table table table-primary table table-bordered">
                     <thead id="tblPayHeader">
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col">Payment ID</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Type</th>
+                        <th scope="col">Booking ID</th>
                         <th scope="col">Amount</th>
                     </tr>
                     </thead>
-                    <tbody class="tblPayBody">
+                    <tbody id="tblPayBody">
                     </tbody >
                 </table>
             </section>

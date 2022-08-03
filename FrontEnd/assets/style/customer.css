@@ -102,3 +102,31 @@
     top: -208px;
     left: 1013px;
 }
+
+/*Booking Response*/
+#bookingResponse{
+    width: 100%;
+    height: 100vh;
+}
+#cover5{
+    width: 80%;
+    height: 73%;
+    position: relative;
+    margin: auto;
+    top: 140px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #dfe6e9;
+}
+#bookingResponseTable{
+    bottom: 184px;
+    position: relative;
+    padding: 60px;
+    top: 6px;
+}
+#bookingSearch{
+    position: relative;
+    top: 7vh;
+    left: 70px;
+}

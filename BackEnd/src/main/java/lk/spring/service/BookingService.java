@@ -14,4 +14,8 @@ public interface BookingService {
     BookingDTO findLastBookingById();
 
     List<BookingDTO> getBookinginId(String id);
+
+    List<BookingDTO> getBookingMultiStatus(String id);
+
+    List<BookingDTO> readByStatus(String status);
 }
