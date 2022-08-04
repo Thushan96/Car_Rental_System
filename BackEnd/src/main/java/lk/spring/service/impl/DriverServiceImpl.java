@@ -102,7 +102,7 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO getRandomDriver() {
 
         Random random = new Random();
-        int i = random.nextInt(10);
+        int i = random.nextInt(10) + 1;
         System.out.println(i + " Random i");
 //        System.out.println( driverDTOS.get(i)+" Random dri");
 //        return driverDTOS.get(i);

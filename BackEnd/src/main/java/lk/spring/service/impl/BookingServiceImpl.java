@@ -83,7 +83,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public List<BookingDTO> readByStatus(String status) {
-        List<Booking> bookings = bookingRepo.readByStatus(status);
-        return mapper.map(bookings,new TypeToken<ArrayList<BookingDTO>>(){}.getType());
+        return mapper.map(bookingRepo.readByStatus(status),new TypeToken<ArrayList<BookingDTO>>(){}.getType());
     }
 }

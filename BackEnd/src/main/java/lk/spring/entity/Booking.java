@@ -27,7 +27,7 @@ public class Booking {
     private Car car;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "driverID", referencedColumnName = "driverID",nullable = false)
+    @JoinColumn(name = "driverID", referencedColumnName = "driverID",nullable = true)
     private Driver driver;
 
 //    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)

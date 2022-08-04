@@ -222,86 +222,7 @@ function loadAllCars() {
     });
 }
 
-//End Customer get all car Section
 
-//Start Customer PlaceOrder Section
-$('#btnPlaceOrder').click(function () {
-
-    var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-    today = mm + '-' + dd + '-' + yyyy;
-
-    let pickupDate = $('#pickUpDate').val();
-    let returnDate = $('#returnDate').val();
-    let cusID = "C001";
-    let driverId = "D001";
-    let carid = "CR001";
-    let bookingId = "B001";
-    let customer;
-    let car;
-    let driver;
-
-    $.ajax({
-        method: 'GET',
-        url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/customer/' + cusID,
-        async: false,
-        success: function (res) {
-            customer = res.data;
-        }
-    });
-
-    $.ajax({
-        method: 'GET',
-        url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/car/' + carid,
-        async: false,
-        success: function (res) {
-            car = res.data;
-        }
-    });
-
-    $.ajax({
-        method: 'GET',
-        url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/driver/' + driverId,
-        async: false,
-        success: function (res) {
-            driver = res.data;
-        }
-    });
-
-    console.log(customer);
-    console.log(car);
-    console.log(driver);
-
-    $.ajax({
-        method: 'POST',
-        url: 'http://localhost:8080/GMA_Backend_war_exploded/v2/booking',
-        data: JSON.stringify({
-            "bookingId": bookingId,
-            "bookingDate": today,
-            "bookingPickDate": pickupDate,
-            "bookingStatus": "Ordered",
-            "bookingNote": "normal",
-            "bookingReturnDate": returnDate,
-            "customerId": cusID,
-            "carId": carid,
-            "driverId": driverId
-        }),
-        async: false,
-        dataType: 'Json',
-        contentType: "application/json; charset=utf-8",
-        success: function (res) {
-            if (res.message == 'Success') {
-                alert('Booking successFul..!');
-                $("#tblOrderBody").empty();
-                clearOrderPage();
-                getBookingID();
-            }
-        }
-    });
-});
-//End Customer PlaceOrder Section
 
 function clearOrderPage(){
     $('#driver').val("");
@@ -503,7 +424,7 @@ $('#btnBooking').click(function () {
     console.log(custID ,bookingID,pickupDate,returnDate,cType,carId,driverId,today);
 
     let car;
-    let driver = null;
+    let objDriver = null;
     let customer;
 
     if (cType != null) {
@@ -539,11 +460,11 @@ $('#btnBooking').click(function () {
                             async: false,
                             dataType: 'json',
                             success: function (response) {
-                                driver = response.data;
+                                objDriver = response.data;
                             }
                         });
                     }else {
-                        driver=null;
+                        objDriver="No Driver";
                     }
 
                     console.log("bookingId"+bookingID+ "driver " + driver + " car " + car + " cust " + customer);
@@ -561,13 +482,12 @@ $('#btnBooking').click(function () {
                                 status: "pending",
                                 customer: customer,
                                 car: car,
-                                driver: driver
+                                driver: objDriver
                             }
                         ),
                         success: function (response) {
                             let data = response.data;
                             // let bid = $('#cbookingID').val(data.bookingID);
-                            console.log(data);
                             // getBookingUpdateResp(bid);
                             // loadAllCRBooking();
                             // loadOrdersByCustomer();

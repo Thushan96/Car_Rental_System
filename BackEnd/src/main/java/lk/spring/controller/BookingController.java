@@ -84,8 +84,7 @@ public class BookingController{
 
     @GetMapping(path = "/get/{status}")
     public ResponseUtil getAllBookingsinstatus(@PathVariable String status) {
-        List<BookingDTO> allBookings = bookingService.readByStatus(status);
-        return new ResponseUtil(200, "Done", allBookings);
+        return new ResponseUtil(200, "Done",bookingService.readByStatus(status));
     }
 
 

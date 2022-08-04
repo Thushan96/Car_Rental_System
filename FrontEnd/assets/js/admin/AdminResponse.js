@@ -4,6 +4,8 @@ loadAllRBooking();
 function loadAllRBooking() {
     $('#bookingReqTBody').empty();
 
+    console.log("inside booking request body");
+
     $.ajax({
         method: 'GET',
         url: bookingBaseUrl+"/get/pending",
@@ -11,26 +13,36 @@ function loadAllRBooking() {
         async: false,
         success: function (resp) {
             let response = resp.data;
-            for (var i in response) {
-                console.log(response.driverId);
+            for (let i=0;i<response.length;i++) {
                 let bookingID = (response[i].bookingID);
                 let orddate = (response[i].date);
                 let customerID = response[i].customer.customerID;
                 let carID = response[i].car.carId;
                 let pickupDate = response[i].pickupDate;
                 let returnDate = response[i].returnDate
-                let driverID = response[i].driver.driverID;
+                let driverID = response[i].driver;
                 let d = driverID;
                 let status = response[i].status;
-                if (driverID == "") {
-                    d = "";
+                if (driverID === undefined || driverID==null || driverID==false) {
+                    console.log("underfined");
+                    d = "No Driver";
+                }else {
+                    d=response[i].driver.driverID;
+
                 }
 
-                var row = `<tr><td>${bookingID}</td><td>${orddate}</td><td>${customerID}</td><td>${carID}</td><td>${pickupDate}</td><td>${returnDate}</td><td>${d}</td><td>${status}</td>
+
+
+
+
+                let row = `<tr><td>${bookingID}</td><td>${orddate}</td><td>${customerID}</td><td>${carID}</td><td>${pickupDate}</td><td>${returnDate}</td><td>${d}</td><td>${status}</td>
                             <td><button type="button" class="btn btn-success rounded-pill btn-sm px-3" id="accept"><i class="far fa-check-circle fa-2x"></i></button>
                                 </td><td><button type="button" class="btn btn-danger rounded-pill btn-sm px-3"" id="reject"><i class="fas fa-trash-alt fa-2x"></i></button></td></tr>`;
+                console.log(row);
                 $('#bookingReqTBody').append(row);
 
+
+            }
 
                 $('#bookingReqTBody').on('click', "#accept", function () {
                     let closest = $(this).closest('tr');
@@ -51,7 +63,6 @@ function loadAllRBooking() {
 
                 $('#bookingReqTBody').on('click', "#reject", function () {
                     let closest = $(this).closest('tr');
-                    console.log("in reject");
 
                     let bookingId = closest.find('td:eq(0)').text();
                     let ordDate = closest.find('td:eq(1)').text();
@@ -64,8 +75,6 @@ function loadAllRBooking() {
                     updateBooking(bookingId, ordDate, cid, carid, pickupdate, returnDate, driverId, status);
                 });
 
-
-            }
         }
     });
 }
@@ -102,10 +111,10 @@ function updateBooking(bookingId, ordDate, cid, carid, pickupdate, returnDate, d
         }
     });
 
-    if (driverId != null) {
+    if (driverId !="No Driver" ) {
         $.ajax({
             method: "GET",
-            url: driverBaseUrl +"/"+ driverId,
+            url: driverBaseUrl +"/"+ "D0",
             async: false,
             dataType: 'json',
             success: function (response) {
