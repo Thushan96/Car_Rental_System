@@ -90,6 +90,9 @@ function clearCustomerFields() {
     $('#adCustDl').val("");
     $('#adCustContact').val("");
     $('#adCustPassword').val("");
+    $('#adCustUserName').val("");
+
+
 }
 
 //Start Admin Save Section
@@ -106,6 +109,8 @@ $('#btnAdminCustomerSave').click(function () {
         let custDl = $('#adCustDl').val();
         let custContact = $('#adCustContact').val();
         let custPassword = $('#adCustPassword').val();
+        let userName = $('#adCustUserName').val();
+
 
         $.ajax({
             method: "POST",
@@ -122,7 +127,7 @@ $('#btnAdminCustomerSave').click(function () {
                 nicNo: custNic,
                 drivingLicenceNo: custDl,
                 password: custPassword,
-                userName:custId
+                userName:userName
             }),
             success: function (res) {
                 alert("Customer Successfully Registered");
@@ -179,6 +184,7 @@ $('#btnAdminCustomerUpdate').click(function () {
         let custDl = $('#adCustDl').val();
         let custContact = $('#adCustContact').val();
         let custPassword = $('#adCustPassword').val();
+        let userName = $('#adCustUserName').val();
 
 
         $.ajax({
@@ -196,7 +202,7 @@ $('#btnAdminCustomerUpdate').click(function () {
                     "nicNo": custNic,
                     "drivingLicenceNo": custDl,
                     "password": custPassword,
-                    "userName":custId
+                    "userName":userName
                 }
             ),
             success: function (data) {
@@ -264,11 +270,13 @@ $("#customerSearchbtn").click(function (){
                 $('#adCustNic').val(data.nicNo);
                 $('#adCustDl').val(data.drivingLicenceNo);
                 $('#adCustContact').val(data.contact);
+                $('#adCustUserName').val(data.userName);
                 $('#adCustPassword').val(data.password);
                 loadAllCustomer();
 
             },
             error: function (ob) {
+                loadAllCustomer();
                 alert(ob.responseJSON.message);
             }
 

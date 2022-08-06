@@ -18,15 +18,12 @@ $("#btn_Login").click(function () {
                 console.log(role);
                 if (role == "Admin") {
                     loginSave("Admin");
-                    alert('Admin Login');
                     location.replace("AdminDashBoard.html");
                 } else if (role == "Driver") {
-                    alert('Driver Login');
                     location.replace("DriverDashBoard.html");
                     loginSave("Driver");
 
                 } else if (role == "Customer") {
-                    alert('Customer Login');
                     location.replace("CustomerDashBoard.html");
                     loginSave("Customer");
 

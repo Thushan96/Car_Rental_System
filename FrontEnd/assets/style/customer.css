@@ -13,14 +13,14 @@
 }
 #cover1{
     width: 80%;
-    height: 93%;
+    height: max-content;
     position: absolute;
     margin: auto;
     top: 97px;
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color: #cfd8dc;
 }
 /*        */
 #bookingRequest{
@@ -36,7 +36,9 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color:#cfd8dc;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 #bookingRequest form{
     padding: 72px;
@@ -44,9 +46,10 @@
 #bookingRequest section{
     padding: 30px;
 }
-#btnPlaceOrder{
+#btnBooking{
     position: relative;
-    left: 1046px;
+    left: 55rem;
+    bottom: 14rem;
 }
 
 /*         */
@@ -63,18 +66,15 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color: #cfd8dc;
+    overflow-y: scroll;
 }
 #paymentTable{
-    bottom: 184px;
+    top: 16px;
     position: relative;
     padding: 95px;
 }
-#payment img{
-    position: relative;
-    height: 44vh;
-    filter: brightness(0.9);
-}
+
 /*       */
 #customer_Car{
     width: 100%;
@@ -89,7 +89,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color: #cfd8dc;
+    overflow-y: scroll;
 }
 #cust_CarTable{
     bottom: 184px;
@@ -98,10 +99,14 @@
     top: 6px;
 }
 #btnCarsRefresh{
-    position: relative;
-    top: -208px;
-    left: 1013px;
+    /*position: relative;*/
+    /*top: -208px;*/
+    /*left: 1013px;*/
+    position: absolute;
+    top: 3rem;
+    left: 57rem;
 }
+
 
 /*Booking Response*/
 #bookingResponse{
@@ -117,7 +122,8 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color: #cfd8dc;
+    overflow-y: scroll;
 }
 #bookingResponseTable{
     bottom: 184px;
@@ -129,4 +135,9 @@
     position: relative;
     top: 7vh;
     left: 70px;
+}
+.label{
+    position: absolute;
+    top: 27px;
+    right: 234px;
 }

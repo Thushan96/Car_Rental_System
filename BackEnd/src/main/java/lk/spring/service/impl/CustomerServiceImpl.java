@@ -75,6 +75,11 @@ public class CustomerServiceImpl implements CustomerService {
         }
     }
 
+    @Override
+    public int countByCustomerID() {
+        return customerRepo.countByCustomerID();
+    }
+
 
     @Override
     public boolean findByUserName(String userName) {

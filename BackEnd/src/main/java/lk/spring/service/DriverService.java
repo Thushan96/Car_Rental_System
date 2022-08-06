@@ -16,6 +16,8 @@ public interface DriverService {
     DriverDTO findLastDriverById();
 
 
+    int getDriverCount();
+
     boolean findByUserNameAndPassword(String userName, String password);
 
     boolean findByUserName(String userName);

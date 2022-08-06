@@ -22,9 +22,11 @@
         <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Customer_Page" href="#admin_Customer_Page">Customers</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Car_Page" href="#admin_Car_Page">Cars</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Driver_Page" href="#admin_Driver_Page">Drivers</a></li>
-        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Order_Page" href="#admin_Order_Page">Orders</a></li>
+<!--        <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Order_Page" href="#admin_Order_Page">Orders</a></li>-->
         <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Payment_Page" href="#admin_Payment_Page">Payments</a></li>
         <li class="nav-item"><a class="nav-link " aria-current="page" id="#admin_Request_Page" href="#admin_Request_Page"> Booking Request</a></li>
+        <li class="nav-item"><a class="nav-link " aria-current="page" href="../index.html">Log Out</a></li>
+
     </ul>
 </header>
 
@@ -282,6 +284,9 @@
                     <input type="text" class="form-control" id="adCustContact" placeholder="Contact">
                 </div>
                 <div class="col-md-3">
+                    <input type="username" class="form-control" id="adCustUserName" placeholder="UserName">
+                </div>
+                <div class="col-md-3">
                     <input type="password" class="form-control" id="adCustPassword" placeholder="Password">
                 </div>
 
@@ -312,15 +317,7 @@
                 </tr>
                 </thead>
                 <tbody id="tblCustomerBody">
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+
                 </tbody >
             </table>
         </section>
@@ -491,7 +488,7 @@
 
                     <div id="driverSearch" class="col-md-2" >
                         <input class="form-control me-2" type="search" id="driverCustomer" placeholder="Search" aria-label="Search">
-                        <button id="driverSearchbtn" class="btn btn-outline-success" type="submit">Search</button>
+                        <button id="driverSearchbtn" class="btn btn-outline-success" type="button">Search</button>
                     </div>
 
                 </form>
@@ -519,40 +516,40 @@
 </section>
 
 <!--    Order Section-->
-<section id="admin_Order_Page">
-        <div id="cover6">
+<!--<section id="admin_Order_Page">-->
+<!--        <div id="cover6">-->
 
-            <button type="button" class="btn btn-warning" id="btnOrdersRefresh" >Refresh</button>
+<!--            <button type="button" class="btn btn-warning" id="btnOrdersRefresh" >Refresh</button>-->
 
-            <img src="../assets/images/other/Image10.jpg">
+<!--&lt;!&ndash;            <img src="../assets/images/other/Image11.jpg">&ndash;&gt;-->
 
-            <section id="orderTable" class="mt-5">
-                <table class="table table table-primary table table-bordered">
-                    <thead id="tblOrders">
-                    <tr>
-                        <th scope="col">Booking ID</th>
-                        <th scope="col">Car ID</th>
-                        <th scope="col">Driver ID</th>
-                        <th scope="col">Customer ID</th>
-                        <th scope="col">Order Date</th>
-                        <th scope="col">Pickup Date</th>
-                        <th scope="col">Return Date</th>
-                        <th scope="col">Status</th>
-                    </tr>
-                    </thead>
-                    <tbody class="tblOrderBody">
-                    </tbody >
-                </table>
-            </section>
+<!--            <section id="orderTable" class="mt-5">-->
+<!--                <table class="table table table-primary table table-bordered">-->
+<!--                    <thead id="tblOrders">-->
+<!--                    <tr>-->
+<!--                        <th scope="col">Booking ID</th>-->
+<!--                        <th scope="col">Car ID</th>-->
+<!--                        <th scope="col">Driver ID</th>-->
+<!--                        <th scope="col">Customer ID</th>-->
+<!--                        <th scope="col">Order Date</th>-->
+<!--                        <th scope="col">Pickup Date</th>-->
+<!--                        <th scope="col">Return Date</th>-->
+<!--                        <th scope="col">Status</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody class="tblOrderBody">-->
+<!--                    </tbody >-->
+<!--                </table>-->
+<!--            </section>-->
 
-        </div>
-</section>
+<!--        </div>-->
+<!--</section>-->
 
 <!--Payment Section-->
 <section id="admin_Payment_Page">
     <div id="cover7">
 
-        <img src="../assets/images/other/Img6.png">
+<!--        <img src="../assets/images/other/Image12.png">-->
 
         <section id="paymentTable" class="mt-5">
             <table class="table table table-primary table table-bordered">

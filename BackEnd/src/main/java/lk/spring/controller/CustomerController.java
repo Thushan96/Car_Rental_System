@@ -75,4 +75,9 @@ public class CustomerController {
         return new  ResponseUtil(200,"0k",id);
     }
 
+    @GetMapping(path = "/custCount")
+    public ResponseUtil getCountofCustomer(){
+        return new ResponseUtil(200,"Done",customerService.countByCustomerID());
+    }
+
 }

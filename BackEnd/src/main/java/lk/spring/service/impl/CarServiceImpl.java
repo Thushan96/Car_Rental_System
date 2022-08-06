@@ -1,9 +1,7 @@
 package lk.spring.service.impl;
 
 import lk.spring.dto.CarDTO;
-import lk.spring.dto.CustomerDTO;
 import lk.spring.entity.Car;
-import lk.spring.entity.Customer;
 import lk.spring.repo.CarRepo;
 import lk.spring.service.CarService;
 import org.modelmapper.ModelMapper;
@@ -72,4 +70,10 @@ public class CarServiceImpl implements CarService {
         return mapper.map(all, new TypeToken<ArrayList<CarDTO>>() {
         }.getType());
     }
+
+    @Override
+    public int getCarCount() {
+        return carRepo.getCarCount();
+    }
+
 }

@@ -111,19 +111,9 @@ function updateBooking(bookingId, ordDate, cid, carid, pickupdate, returnDate, d
         }
     });
 
-    if (driverId !="No Driver" ) {
-        $.ajax({
-            method: "GET",
-            url: driverBaseUrl +"/"+ "D0",
-            async: false,
-            dataType: 'json',
-            success: function (response) {
-                driver = response.data;
-                if (status == "Accept") {
-                    updateDriverAjax(driver);
-                }
-            }
-        });
+    if (driverId =="No Driver" ) {
+
+        driver=null;
 
     } else {
         $.ajax({
@@ -186,7 +176,7 @@ function updateCarAjax(car) {
                 carFreeMillageDuration:car.carFreeMillageDuration,
                 carFreeMillagePrice:car.carFreeMillagePrice,
                 carNmbOfPassengers: car.carNmbOfPassengers,
-                transmissionType: car.transmissionType,
+                carTransmissionType: car.carTransmissionType,
                 carFuelType: car.carFuelType,
                 carColour: car.carColour,
                 carDailyRate: car.carDailyRate,

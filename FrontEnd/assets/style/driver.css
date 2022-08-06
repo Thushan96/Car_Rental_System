@@ -25,7 +25,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color: #cfd8dc;
 }
 #scheduledTable{
     position: relative;
@@ -34,10 +34,14 @@
     z-index: 10;
 }
 #driverSchedule img{
-    filter: brightness(88%);
+    filter: brightness(59%);
     bottom: 23px;
     position: relative;
+    left: 132px;
+    height: 60%;
+    width: 80%;
 }
+
 #cover2{
     width: 80%;
     height: 81%;
@@ -47,5 +51,6 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
+    background-color: #cfd8dc;
+    overflow-y: scroll;
 }

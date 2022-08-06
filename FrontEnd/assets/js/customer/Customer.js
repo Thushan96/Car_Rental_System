@@ -5,8 +5,12 @@ const driverBaseUrl="http://localhost:8080/api/v1/driver";
 const bookingBaseurl="http://localhost:8080/api/v1/booking";
 const paymentBaseurl="http://localhost:8080/api/v1/payment";
 
+window.onload = (event) => {
+    getLastLoginData();
+    loadAllCRBooking();
+    loadAllCars();
+};
 
-getLastLoginData();
 
 function getLastLoginData() {
     $.ajax({
@@ -195,7 +199,6 @@ $('#btnCarsRefresh').click(function () {
     loadAllCars();
 });
 
-loadAllCars();
 
 function loadAllCars() {
     $('#tblCustCar').empty();
@@ -491,9 +494,11 @@ $('#btnBooking').click(function () {
                             // getBookingUpdateResp(bid);
                             // loadAllCRBooking();
                             // loadOrdersByCustomer();
-
-
+                            clearBookingfeids();
+                            setBookingId();
                             alert("Car booking request Successful");
+                            loadAllCRBooking();
+
                         },
                         error: function (ob) {
                             alert(ob.responseJSON.message);
@@ -517,6 +522,14 @@ $('#btnBooking').click(function () {
 
     }
 });
+
+function clearBookingfeids(){
+    $('#driver').val(-1);
+    $('#returnDate').val(today);
+    $('#pickupDate').val(today);
+    $('#carId').val(-1);
+    $('#carType').val(-1);
+}
 
 loadPaymentDetails($('#custId').val());
 
@@ -544,7 +557,7 @@ function loadPaymentDetails(id){
 
 
 /////////////Booking Status------------
-loadAllCRBooking();
+let totalAmount=null;
 function loadAllCRBooking() {
 
     let custId = $('#custId').val();
@@ -567,11 +580,12 @@ function loadAllCRBooking() {
                 let carID = response[i].car.carId;
                 let pickupDate = response[i].pickupDate;
                 let returnDate = response[i].returnDate
-                let driverID = response[i].driver.driverID;
-                let d = driverID;
+                let d ;
                 let status = response[i].status;
-                if (driverID == null) {
+                if (response[i].driver==false || response[i].driver==null || response[i].driver==undefined ) {
                     d = "No Need Driver";
+                }else{
+                    d=response[i].driver.driverID;
                 }
 
                 var row = `<tr><td>${bookingID}</td><td>${orddate}</td><td>${customerID}</td><td>${carID}</td><td>${pickupDate}</td><td>${returnDate}</td><td>${d}</td><td>${status}</td></tr>`;
@@ -598,8 +612,51 @@ function loadAllCRBooking() {
                     $('#hiddnReturn').val(rtndate);
 
 
+
+
                     if (status == "Accept") {
+
+                        let carDailyRate=getCarDailyRate(carid);
+                        let carMonthlyRate=getCarMonthlyRate(carid);
+
                         $("#btnRent").attr("disabled", false);
+
+                        let pYear=parseInt(pickup.split("-")[0]);
+                        let pMonth=parseInt(pickup.split("-")[1]);
+                        let pDay=parseInt(pickup.split("-")[2]);
+
+                        let rYear=parseInt(rtndate.split("-")[0]);
+                        let rMonth=parseInt(rtndate.split("-")[1]);
+                        let rDay=parseInt(rtndate.split("-")[2]);
+
+                        if (pYear==rYear){
+                            console.log("year");
+                            if (rMonth==pMonth){
+                                console.log("month");
+                                if (rDay==pDay){
+                                    console.log("day");
+                                    totalAmount+=carDailyRate;
+                                }else {
+                                    console.log("day differ");
+                                    totalAmount+=carDailyRate*(rDay-pDay);
+                                }
+                            }else if (rMonth>pMonth){
+                                console.log("month differ");
+                                totalAmount+=carMonthlyRate*(rMonth-pMonth);
+                            }else {
+                                console.log("year differ");
+                                totalAmount+=0;
+                            }
+                        }else {
+                            console.log("invalid date");
+                            totalAmount+=0;
+                            alert("This order has date range is invalid");
+                        }
+
+                        console.log(totalAmount);
+                        $('#grossTotalPlaceOrder').text("Rs."+totalAmount+".00");
+
+
                         // setLoosDmg();
                         // if (drvid == "") {
                         //     // $('#msg').click(function () {
@@ -661,6 +718,36 @@ function loadAllCRBooking() {
             }
         }
     });
+}
+
+function getCarDailyRate(id){
+    let rate=null;
+    $.ajax({
+        method: "GET",
+        url: carBaseUrl +"/"+ id,
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            rate=response.data.carDailyRate;
+        }
+    });
+    return rate;
+
+}
+
+function getCarMonthlyRate(id){
+    let rate=null;
+    $.ajax({
+        method: "GET",
+        url: carBaseUrl +"/"+ id,
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            rate=response.data.carMonthlyRate;
+        }
+    });
+    return rate;
+
 }
 
 //Delete Order------
@@ -780,7 +867,7 @@ function updateCarinAjax(car) {
                 carFreeMillageDuration:car.carFreeMillageDuration,
                 carFreeMillagePrice:car.carFreeMillagePrice,
                 carNmbOfPassengers: car.carNmbOfPassengers,
-                transmissionType: car.transmissionType,
+                carTransmissionType: car.carTransmissionType,
                 carFuelType: car.carFuelType,
                 carColour: car.carColour,
                 carDailyRate: car.carDailyRate,
@@ -822,6 +909,134 @@ function updateDriAjax(driver) {
     });
 }
 
+
+//////////////payments
+let paymentId;
+
+
+loadPaymentId();
+
+
+function loadPaymentId(){
+    $.ajax({
+        method: "GET",
+        url: paymentBaseurl+'/paymentId',
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            paymentId=response.data;
+        },
+    });
+}
+
+
+
+//payment
+$('#btnRent').click(function () {
+
+
+    let bookingId = $('#cbookingID').val();
+    let total =parseInt($('#grossTotalPlaceOrder').val().split(".")[1]);
+    let pick = $('#hiddnpick').val();
+    let rtndate = $('#hiddnReturn').val();
+    let carid = $('#hiddnCar').val();
+    let cid = $('#hiddnCust').val();
+
+
+
+
+
+
+
+    var b = null;
+
+    let car;
+    let driver;
+    let customer;
+
+    console.log(bookingId);
+
+    $.ajax({
+        method: "GET",
+        url: bookingBaseurl + "/" + bookingId,
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            b = response.data;
+
+        }
+    });
+    $.ajax({
+        method: "GET",
+        url: carBaseUrl +"/"+ carid,
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            car = response.data;
+            console.log("car " + car);
+        }
+    });
+    $.ajax({
+        method: "GET",
+        url: customerBaseUrl +"/"+ cid,
+        async: false,
+        dataType: 'json',
+        success: function (response) {
+            customer = response.data;
+            console.log("car " + car);
+        }
+    });
+
+                            $.ajax({
+                                method: "POST",
+                                url: paymentBaseurl,
+                                async: false,
+                                contentType: "application/json",
+                                data: JSON.stringify(
+                                    {
+                                        paymentID: paymentId,
+                                        date: today,
+                                        amount: totalAmount,
+                                        description: "fully payed",
+                                        booking:b
+                                    }
+                                ),
+                                success: function (response) {
+                                    let pid = paymentId;
+
+                                    $.ajax({
+                                        method: "PUT",
+                                        url: bookingBaseurl,
+                                        contentType: "application/json",
+                                        async: false,
+                                        data: JSON.stringify(
+                                            {
+                                                bookingID: bookingId,
+                                                date: today,
+                                                pickupDate: pick,
+                                                returnDate: rtndate,
+                                                status: "Rent",
+                                                customer: customer,
+                                                car: car,
+                                                driver: driver
+                                            }
+                                        ),
+                                        success: function (data) {
+                                            loadAllCRBooking();
+                                            $("#btnRent").attr("disabled", true);
+                                            $('#grossTotalPlaceOrder').text("");
+
+
+                                        }
+                                    });
+
+                                    alert('Payment success! payment ID:'+pid);
+                                }
+                            });
+
+
+
+});
 
 
 

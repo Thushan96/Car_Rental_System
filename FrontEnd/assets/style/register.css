@@ -13,14 +13,12 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: #dfe6e9;
 }
 #registrationImage{
     position: relative;
     width: 133vh;
     top: 8px;
     left: 13px;
-    filter: brightness(120%);
 }
 
 #registerDiv{
@@ -37,9 +35,9 @@
 }
 #ftnPassword{
     position: relative;
-    top: 28px;
+    top: 20px;
 }
 #haveAccount{
     position: relative;
-    top: 30px;
+    top: 25px;
 }

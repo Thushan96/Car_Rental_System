@@ -78,30 +78,65 @@ header{
     width: 100%;
     overflow-x: hidden;
 }
-
 .leftSide{
     display: flex;
     height:100%;
-    width: 60%;
+    width: 80%;
+    background-image: url("../images/other/coverImage.png");
 }
+#heading{
+    position: relative;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 220px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 48px;
+    font-weight: bold;
+    color: #e7f1ff;
+}
+#btn-search{
+    position: absolute;
+    width: 110px;
+    height: 35px;
+    margin: auto;
+    right: 258px;
+    left: 0;
+    bottom: -90px;
+    top: 304px;
+    border-radius: 7px;
+    border-color: white;
+    text-decoration: none;
+}
+#btn-search:hover {
+    background-color: white;
+    color: #f39c12;
+}
+#btn-search_a {
+    text-decoration: none;
+    color: black;
+}
+
+#btn-search_a:hover {
+    color: #f39c12;
+}
+
 .rightSide{
     display: flex;
     height: 100%;
-    width: 40%;
-    background-color: #b388ff;
+    width: 35%;
     z-index: -5;
 }
 #board {
     width: 60vh;
     height: 20vh;
-    position: absolute;
-    top: 389px;
-    left: 155px;
-    background-color: #b388ff;
+    position: relative;
+    top: 396px;
+    right: 282px;
     border-radius: 12px;
     padding: 30px 30px 30px 30px;
-    cursor: pointer;
-    font-style: italic;
+    font-style: normal;
 }
 
 /*         */

@@ -87,5 +87,12 @@ public class BookingController{
         return new ResponseUtil(200, "Done",bookingService.readByStatus(status));
     }
 
+    @GetMapping(path = "/bookingCount")
+    public ResponseUtil getCountofBookings(){
+        return new ResponseUtil(200,"Done",bookingService.getBookingCount());
+    }
+
+
+
 
 }

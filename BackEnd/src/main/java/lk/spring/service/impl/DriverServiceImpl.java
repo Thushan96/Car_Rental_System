@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 
@@ -102,7 +101,7 @@ public class DriverServiceImpl implements DriverService {
     public DriverDTO getRandomDriver() {
 
         Random random = new Random();
-        int i = random.nextInt(10) + 1;
+        int i = random.nextInt(10) ;
         System.out.println(i + " Random i");
 //        System.out.println( driverDTOS.get(i)+" Random dri");
 //        return driverDTOS.get(i);
@@ -117,6 +116,11 @@ public class DriverServiceImpl implements DriverService {
             }else {
                 return dto;}
         }
+    }
+
+    @Override
+    public int getDriverCount() {
+        return driverRepo.getDriverCount();
     }
 
 

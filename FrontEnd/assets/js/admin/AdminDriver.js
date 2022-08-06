@@ -77,6 +77,8 @@ function clearDriverFields() {
     $('#adDriverNIC').val("");
     $('#adDriverContact').val("");
     $('#adDriverPassword').val("");
+    $('#adDriverName').val("");
+
 }
 
 //Start Admin Driver Save Section
@@ -176,7 +178,6 @@ $("#btnAdminDriverUpdate").click(function (){
             success: function (data) {
                 loadAllDriver();
                 clearDriverFields();
-                getLastDriverId();
                 alert("Driver Successfully Updated");
                 return true;
             },
@@ -195,9 +196,9 @@ $("#driverSearchbtn").click(function (){
     let id = $("#driverCustomer").val();
     if (id != "") {
         $.ajax({
-            method: "get",
+            method: "GET",
             url: driverBaseUrl + "/" +id,
-            async: true,
+            async: false,
             dataType: 'json',
             success: function (response) {
                 var data = response.data;
@@ -206,9 +207,12 @@ $("#driverSearchbtn").click(function (){
                 $('#adDriverNIC').val(data.nic);
                 $('#adDriverContact').val(data.contactNo);
                 $('#adDriverPassword').val(data.password);
+                $('#adDriverUsername').val(data.userName);
+                loadAllDriver();
             },
             error: function (ob) {
                 alert(ob.responseJSON.message);
+                loadAllDriver();
             }
         });
     } else {
@@ -226,7 +230,6 @@ $("#btnAdminDriverDelete").click(function (){
             async: true,
             success: function (response) {
                 loadAllDriver();
-                getLastDriverId();
                 clearDriverFields();
                 alert("Driver Successfully Deleted");
             },

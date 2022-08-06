@@ -10,4 +10,6 @@ public interface PaymentRepo extends JpaRepository<Payment,String> {
 
     @Query(value = "SELECT p from Payment p where p.booking.customer.customerID=:custId")
     List<Payment> getPaymentCid(String custId);
+
+    Payment findTopByOrderByPaymentIDDesc();
 }

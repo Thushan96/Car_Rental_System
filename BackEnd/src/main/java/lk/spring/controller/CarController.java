@@ -55,4 +55,10 @@ public class CarController {
         return new ResponseUtil(200,"Deleted",null);
     }
 
+    @GetMapping("/carCount")
+    public ResponseUtil getCustomerCount(){
+        int count = carService.getCarCount();
+        return new ResponseUtil(200,"Done",count);
+    }
+
 }

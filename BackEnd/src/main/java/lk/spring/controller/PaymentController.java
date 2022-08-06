@@ -1,5 +1,6 @@
 package lk.spring.controller;
 
+import lk.spring.dto.BookingDTO;
 import lk.spring.dto.PaymentDTO;
 import lk.spring.service.PaymentService;
 import lk.spring.util.ResponseUtil;
@@ -50,7 +51,29 @@ public class PaymentController {
 
     @GetMapping(path = "/get/{id}")
     public ResponseUtil getAllPaymentByCustomer(@PathVariable String id){
-        List<PaymentDTO> allPayments = paymentService.getPaymentCid(id);
-        return new ResponseUtil(200,"Done",allPayments);
+        return new ResponseUtil(200,"Done",paymentService.getPaymentCid(id));
+    }
+
+    @GetMapping(path= "/paymentId",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getLastPayment(){
+        PaymentDTO lastPaymentById = paymentService.findLastPaymentById();
+        String id=null;
+        if (lastPaymentById!= null) {
+            int tempId = Integer.parseInt(lastPaymentById.getPaymentID().split("-")[1]);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                id = "P-000" + tempId;
+            } else if (tempId <= 99) {
+                id = "P-00" + tempId;
+            } else if (tempId <= 999) {
+                id = "P-0" + tempId;
+            } else if (tempId <= 9999) {
+                id = "P-" + tempId;
+            }
+        } else {
+            id = "P-0001";
+        }
+
+        return new  ResponseUtil(200,"0k",id);
     }
 }

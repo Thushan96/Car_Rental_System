@@ -18,4 +18,6 @@ public interface BookingService {
     List<BookingDTO> getBookingMultiStatus(String id);
 
     List<BookingDTO> readByStatus(String status);
+
+    int getBookingCount();
 }

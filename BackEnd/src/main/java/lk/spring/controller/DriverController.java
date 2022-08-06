@@ -82,4 +82,9 @@ public class DriverController {
         System.out.println("c69 "+dto);
         return new ResponseUtil(200,"Done",dto);
     }
+
+    @GetMapping(path = "/driverCount")
+    public ResponseUtil getCountofDrivers(){
+        return new ResponseUtil(200,"Done",driverService.getDriverCount());
+    }
 }

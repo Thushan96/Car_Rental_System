@@ -5,6 +5,7 @@ loadAllPayments();
 
 function loadAllPayments() {
     $('#tblOrderBody').empty();
+    console.log("inside payments")
     $.ajax({
         url: paymentBaseUrl,
         method: 'GET',
@@ -18,9 +19,11 @@ function loadAllPayments() {
                 let amount = values[i].amount;
                 let bookingId = values[i].booking.bookingID;
 
+                console.log(id,date,amount,bookingId);
 
 
-                $('#tblPaymentBody').append(`<tr><td>${paymentID}</td><td>${date}</td><td>${amount}</td><td>${bookingId}</td></tr>`);
+
+                $('#tblPaymentBody').append(`<tr><td>${id}</td><td>${date}</td><td>${amount}</td><td>${bookingId}</td></tr>`);
             }
         }
     });

@@ -12,4 +12,6 @@ public interface PaymentService {
     List<PaymentDTO> getAllPayments();
 
     List<PaymentDTO> getPaymentCid(String custId);
+
+    PaymentDTO findLastPaymentById();
 }

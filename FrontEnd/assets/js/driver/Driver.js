@@ -52,7 +52,7 @@ function loadAllSchedule() {
 
                 let custName = response[i].customer.name;
                 let contact = response[i].customer.contact;
-                let carID = response[i].car.carID;
+                let carID = response[i].car.carId;
                 let pick = response[i].pickupDate;
                 let rtnd = response[i].returnDate;
 
@@ -159,20 +159,3 @@ function checkValidationDriverProfile() {
 //     }
 // });
 //End Driver Save Section
-
-$('#btnDriverProfile').click(function () {
-    $('#driverProfile').css({
-        'display': 'block'
-    });
-    $('#driverSchedule').css({
-        'display': 'none'
-    });
-});
-$('#btnDriverSchedule').click(function () {
-    $('#driverProfile').css({
-        'display': 'none'
-    });
-    $('#driverSchedule').css({
-        'display': 'block'
-    });
-});

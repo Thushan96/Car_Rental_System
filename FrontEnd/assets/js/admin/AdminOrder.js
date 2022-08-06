@@ -25,7 +25,12 @@ function loadAllOrders() {
                 let status = values[i].status;
                 let car = values[i].car.carId;
                 let customer = values[i].customer.customerID;
-                let driver = values[i].driver.driverID;
+                let driver ;
+                if (values[i].driver.driverID == null || values[i].driver.driverID== false ||values[i].driver.driverID==undefined) {
+                    driver = "No Need Driver";
+                }else {
+                   driver= values[i].driver.driverID;
+                }
 
 
                 $('#tblOrderBody').append(`<tr><td>${id}</td><td>${car}</td><td>${customer}</td><td>${driver}</td><td>${date}</td><td>

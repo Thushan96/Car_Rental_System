@@ -67,4 +67,13 @@ public class PaymentServiceImpl implements PaymentService {
     public List<PaymentDTO> getPaymentCid(String custId) {
         return mapper.map(paymentRepo.getPaymentCid(custId),new TypeToken<ArrayList<PaymentDTO>>(){}.getType());
     }
+
+    @Override
+    public PaymentDTO findLastPaymentById() {
+        if (paymentRepo.findTopByOrderByPaymentIDDesc()==null){
+            return null;
+        }else{
+            return mapper.map(paymentRepo.findTopByOrderByPaymentIDDesc(),PaymentDTO.class);
+        }
+    }
 }

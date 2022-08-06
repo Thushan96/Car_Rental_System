@@ -76,13 +76,19 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public List<BookingDTO> getBookingMultiStatus(String custId) {
-            return mapper.map(bookingRepo.getBookingByStatusAndCustomer("Accept","Reject",custId), new TypeToken<List<BookingDTO>>() {
+    public List<BookingDTO> getBookingMultiStatus(String id) {
+        System.out.println("sadfsdfsdfsdfsd sdfsdfs sdfdsfds dsfsdfsdf sdfsdfds");
+            return mapper.map(bookingRepo.getBookingByStatusAndCustomer("Accept","Reject",id), new TypeToken<List<BookingDTO>>() {
             }.getType());
     }
 
     @Override
     public List<BookingDTO> readByStatus(String status) {
         return mapper.map(bookingRepo.readByStatus(status),new TypeToken<ArrayList<BookingDTO>>(){}.getType());
+    }
+
+    @Override
+    public int getBookingCount() {
+        return bookingRepo.getBookingCount();
     }
 }

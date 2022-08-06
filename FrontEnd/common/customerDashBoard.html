@@ -201,6 +201,7 @@
                     </thead>
                     <tbody id="tblCustCar">
 
+
                     </tbody>
                 </table>
             </section>
@@ -301,7 +302,7 @@
                 </table>
             </section>
 
-            <button type="button" class="btn btn-info" id="btnBooking" >Place Order</button>
+            <button type="button" class="btn btn-info" id="btnBooking" >Place Booking</button>
 
         </div>
 
@@ -314,7 +315,7 @@
         <div id="cover5">
 
             <div id="bookingSearch" class="col-md-2" >
-                <input class="form-control me-2" type="search" id="cbookingID" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2" type="search" id="cbookingID" readonly="true" placeholder="Search" aria-label="Search">
             </div>
 
             <input type="text" class="form-control  rounded-7" id="hiddnCar" hidden>
@@ -340,6 +341,7 @@
                     </tr>
                     </thead>
                     <tbody id="cbookingTBody">
+
                     </tbody>
                 </table>
             </section>
@@ -349,6 +351,12 @@
                 <button type="button" class="btn btn-success mt-3 " id="btnRent" style="font-size:15px" disabled>Make Payment</button>
                 <button type="button" class="btn btn-danger mt-3 " id="btnDeleteOrder" style="font-size:15px">Delete Order</button>
             </div>
+
+            <div class="label">
+                <h5 class="col-sm-4 col-form-label">Total</h5>
+                <label class="col-sm-7 col-form-label text-end" id="grossTotalPlaceOrder">0000 </label>
+            </div>
+
         </div>
 
     </section>
@@ -358,9 +366,6 @@
     <!--    payment Section?-->
     <section id="payment">
         <div id="cover3">
-
-            <img src="../assets/images/other/Img7.jpg">
-
             <section id="paymentTable"  class="mt-5">
                 <table class="table table table-primary table table-bordered">
                     <thead id="tblPayHeader">
